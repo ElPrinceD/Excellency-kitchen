@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/excellency-kitchen/static/css/main.1033b8f9.chunk.css",
-    "main.js": "/excellency-kitchen/static/js/main.99bf396a.chunk.js",
-    "main.js.map": "/excellency-kitchen/static/js/main.99bf396a.chunk.js.map",
-    "runtime-main.js": "/excellency-kitchen/static/js/runtime-main.83f87427.js",
-    "runtime-main.js.map": "/excellency-kitchen/static/js/runtime-main.83f87427.js.map",
-    "static/css/2.b7ccbaf7.chunk.css": "/excellency-kitchen/static/css/2.b7ccbaf7.chunk.css",
-    "static/js/2.99840e7f.chunk.js": "/excellency-kitchen/static/js/2.99840e7f.chunk.js",
-    "static/js/2.99840e7f.chunk.js.map": "/excellency-kitchen/static/js/2.99840e7f.chunk.js.map",
-    "index.html": "/excellency-kitchen/index.html",
-    "static/css/2.b7ccbaf7.chunk.css.map": "/excellency-kitchen/static/css/2.b7ccbaf7.chunk.css.map",
-    "static/css/main.1033b8f9.chunk.css.map": "/excellency-kitchen/static/css/main.1033b8f9.chunk.css.map",
-    "static/js/2.99840e7f.chunk.js.LICENSE.txt": "/excellency-kitchen/static/js/2.99840e7f.chunk.js.LICENSE.txt",
-    "static/media/Excellency.c43db1eb.mp4": "/excellency-kitchen/static/media/Excellency.c43db1eb.mp4",
-    "static/media/event-form.css": "/excellency-kitchen/static/media/Excellency_0007_catering-img-1.9b85c3e4.webp",
-    "static/media/remixicon.css": "/excellency-kitchen/static/media/remixicon.f2616f59.ttf"
+    "main.css": "/Excellency-kitchen/static/css/main.a5bc6813.chunk.css",
+    "main.js": "/Excellency-kitchen/static/js/main.99bf396a.chunk.js",
+    "main.js.map": "/Excellency-kitchen/static/js/main.99bf396a.chunk.js.map",
+    "runtime-main.js": "/Excellency-kitchen/static/js/runtime-main.fc0b6ea7.js",
+    "runtime-main.js.map": "/Excellency-kitchen/static/js/runtime-main.fc0b6ea7.js.map",
+    "static/css/2.b86d4798.chunk.css": "/Excellency-kitchen/static/css/2.b86d4798.chunk.css",
+    "static/js/2.99840e7f.chunk.js": "/Excellency-kitchen/static/js/2.99840e7f.chunk.js",
+    "static/js/2.99840e7f.chunk.js.map": "/Excellency-kitchen/static/js/2.99840e7f.chunk.js.map",
+    "index.html": "/Excellency-kitchen/index.html",
+    "static/css/2.b86d4798.chunk.css.map": "/Excellency-kitchen/static/css/2.b86d4798.chunk.css.map",
+    "static/css/main.a5bc6813.chunk.css.map": "/Excellency-kitchen/static/css/main.a5bc6813.chunk.css.map",
+    "static/js/2.99840e7f.chunk.js.LICENSE.txt": "/Excellency-kitchen/static/js/2.99840e7f.chunk.js.LICENSE.txt",
+    "static/media/Excellency.c43db1eb.mp4": "/Excellency-kitchen/static/media/Excellency.c43db1eb.mp4",
+    "static/media/event-form.css": "/Excellency-kitchen/static/media/Excellency_0007_catering-img-1.9b85c3e4.webp",
+    "static/media/remixicon.css": "/Excellency-kitchen/static/media/remixicon.f2616f59.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.83f87427.js",
-    "static/css/2.b7ccbaf7.chunk.css",
+    "static/js/runtime-main.fc0b6ea7.js",
+    "static/css/2.b86d4798.chunk.css",
     "static/js/2.99840e7f.chunk.js",
-    "static/css/main.1033b8f9.chunk.css",
+    "static/css/main.a5bc6813.chunk.css",
     "static/js/main.99bf396a.chunk.js"
   ]
 }
