@@ -1,171 +1,125 @@
-// all images imported from images directory
-// import product_01_image_01 from "../images/product_01.jpg";
-// import product_01_image_02 from "../images/product_01.1.jpg";
-// import product_01_image_03 from "../images/product_01.3.jpg";
+const product_02_image_01 = "https://img.freepik.com/free-photo/delicious-lobster-gourmet-seafood_23-2151713031.jpg?semt=ais_hybrid";
+const product_02_image_02 = "https://img.freepik.com/free-photo/holiday-dinner-with-roasted-chicken-potatoes-food-photography_53876-124086.jpg?semt=ais_hybrid";
+const product_02_image_03 = "https://img.freepik.com/free-photo/rice-dish-with-sauce-mushrooms_23-2148195600.jpg?semt=ais_hybrid";
 
-import product_02_image_01 from "../images/product_2.1.jpg";
-import product_02_image_02 from "../images/product_2.2.jpg";
-import product_02_image_03 from "../images/product_2.3.jpg";
+const product_03_image_01 = "https://img.freepik.com/free-photo/tasty-thanksgiving-meal-top-view_23-2148663987.jpg?semt=ais_hybrid";
+const product_03_image_02 = "https://img.freepik.com/free-photo/view-delicious-meat-cutlets-baked-with-potatoes-tomatoes-black-plate-spices-garlics-cutlery-set-wine-green-black-mix-colors-background_179666-46898.jpg?semt=ais_hybrid";
+const product_03_image_03 = "https://img.freepik.com/free-photo/grilled-zucchini-with-vegetables-tomato-sauce-concept-vegetarian-food_127032-2749.jpg?semt=ais_hybrid";
 
-import product_03_image_01 from "../images/product_3.1.jpg";
-import product_03_image_02 from "../images/product_3.2.jpg";
-import product_03_image_03 from "../images/product_3.3.jpg";
-
-import product_04_image_01 from "../images/product_4.1.jpg";
-import product_04_image_02 from "../images/product_4.2.jpg";
-import product_04_image_03 from "../images/product_4.3.png";
-
-// import product_05_image_01 from "../images/product_04.jpg";
-// import product_05_image_02 from "../images/product_08.jpg";
-// import product_05_image_03 from "../images/product_09.jpg";
-
-// import product_06_image_01 from "../images/bread(1).png";
-// import product_06_image_02 from "../images/bread(2).png";
-// import product_06_image_03 from "../images/bread(3).png";
+const product_04_image_01 = "https://img.freepik.com/free-photo/exotic-salad-bowl-with-mango-tofu-nuts_1220-7914.jpg?semt=ais_hybrid";
+const product_04_image_02 = "https://img.freepik.com/free-photo/overhead-view-smoothie-breakfast-ceramic-plate-white-table-near-epipremnum-aureum-plant_23-2148067210.jpg?semt=ais_hybrid";
+const product_04_image_03 = "https://img.freepik.com/free-photo/zucchini-pasta-red-sauce-sauteed-vegetables-zucchini-carrot-onion-garlic-tomatoes_127032-2640.jpg?semt=ais_hybrid";
 
 const products = [
-  // {
-  //   id: "01",
-  //   title: "Chicken Burger",
-  //   price: 24.0,
-  //   image01: product_01_image_01,
-  //   image02: product_01_image_02,
-  //   image03: product_01_image_03,
-  //   category: "Burger",
-
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque. ",
-  // },
-
+  // Salads
   {
-    id: "02",
-    title: "Vegetarian Pizza",
-    price: 115.0,
+    id: "01",
+    title: "Greek Salad",
+    price: 12.0,
     image01: product_02_image_01,
     image02: product_02_image_02,
     image03: product_02_image_03,
-    category: "Pizza",
-    
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+    category: "Salads",
+    desc: "A refreshing Greek salad with feta cheese, olives, and a tangy vinaigrette.",
   },
-
   {
-    id: "03",
-    title: "Double Cheese Margherita",
-    price: 110.0,
+    id: "02",
+    title: "Caesar Salad",
+    price: 10.0,
     image01: product_03_image_01,
     image02: product_03_image_02,
     image03: product_03_image_03,
-    category: "Pizza",
-    
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+    category: "Salads",
+    desc: "Classic Caesar salad with croutons, parmesan, and creamy dressing.",
   },
 
+  // Starters
+  {
+    id: "03",
+    title: "Spring Rolls",
+    price: 8.0,
+    image01: product_02_image_01,
+    image02: product_02_image_02,
+    image03: product_02_image_03,
+    category: "Starters",
+    desc: "Crispy spring rolls filled with vegetables and served with a sweet chili dip.",
+  },
   {
     id: "04",
-    title: "Maxican Green Wave",
-    price: 110.0,
+    title: "Garlic Bread",
+    price: 6.0,
+    image01: product_03_image_01,
+    image02: product_03_image_02,
+    image03: product_03_image_03,
+    category: "Starters",
+    desc: "Freshly baked garlic bread with a buttery, garlic-infused spread.",
+  },
+
+  // Rice Dishes
+  {
+    id: "05",
+    title: "Vegetable Fried Rice",
+    price: 12.0,
     image01: product_04_image_01,
     image02: product_04_image_02,
     image03: product_04_image_03,
-    category: "Pizza",
-    
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+    category: "Rice Dishes",
+    desc: "Flavorful fried rice with mixed vegetables and aromatic spices.",
+  },
+  {
+    id: "06",
+    title: "Chicken Biryani",
+    price: 15.0,
+    image01: product_02_image_01,
+    image02: product_02_image_02,
+    image03: product_02_image_03,
+    category: "Rice Dishes",
+    desc: "Aromatic basmati rice layered with tender chicken and spices.",
   },
 
-  // {
-  //   id: "05",
-  //   title: "Cheese Burger",
-  //   price: 24.0,
-  //   image01: product_05_image_01,
-  //   image02: product_05_image_02,
-  //   image03: product_05_image_03,
-  //   category: "Burger",
-
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
-  // },
-  // {
-  //   id: "06",
-  //   title: "Royal Cheese Burger",
-  //   price: 24.0,
-  //   image01: product_01_image_01,
-  //   image02: product_01_image_02,
-  //   image03: product_01_image_03,
-  //   category: "Burger",
-
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
-  // },
-
+  // Curries
   {
     id: "07",
-    title: "Seafood Pizza",
-    price: 115.0,
-    image01: product_02_image_02,
-    image02: product_02_image_01,
-    image03: product_02_image_03,
-    category: "Pizza",
-    
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+    title: "Butter Chicken",
+    price: 16.0,
+    image01: product_03_image_01,
+    image02: product_03_image_02,
+    image03: product_03_image_03,
+    category: "Curries",
+    desc: "Rich and creamy butter chicken with a blend of spices and a tomato-based sauce.",
   },
-
   {
     id: "08",
-    title: "Thin Cheese Pizza",
-    price: 110.0,
-    image01: product_03_image_02,
-    image02: product_03_image_01,
-    image03: product_03_image_03,
-    category: "Pizza",
-    
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+    title: "Vegetable Korma",
+    price: 14.0,
+    image01: product_04_image_01,
+    image02: product_04_image_02,
+    image03: product_04_image_03,
+    category: "Curries",
+    desc: "Mild and creamy vegetable korma cooked in a cashew-based sauce.",
   },
 
+  // Desserts
   {
     id: "09",
-    title: "Pizza With Mushroom",
-    price: 110.0,
-    image01: product_04_image_02,
-    image02: product_04_image_01,
-    image03: product_04_image_03,
-    category: "Pizza",
-    
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
+    title: "Chocolate Cake",
+    price: 8.0,
+    image01: product_02_image_01,
+    image02: product_02_image_02,
+    image03: product_02_image_03,
+    category: "Desserts",
+    desc: "Rich and moist chocolate cake topped with a decadent ganache.",
   },
-
-  // {
-  //   id: "10",
-  //   title: "Classic Hamburger",
-  //   price: 24.0,
-  //   image01: product_05_image_02,
-  //   image02: product_05_image_01,
-  //   image03: product_05_image_03,
-  //   category: "Burger",
-
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
-  // },
-
-  // {
-  //   id: "11",
-  //   title: "Crunchy Bread ",
-  //   price: 35.0,
-  //   image01: product_06_image_01,
-  //   image02: product_06_image_02,
-  //   image03: product_06_image_03,
-  //   category: "Bread",
-
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
-  // },
-
-  // {
-  //   id: "13",
-  //   title: "Loaf Bread ",
-  //   price: 35.0,
-  //   image01: product_06_image_03,
-  //   image02: product_06_image_02,
-  //   image03: product_06_image_03,
-  //   category: "Bread",
-
-  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ad et est, fugiat repudiandae neque illo delectus commodi magnam explicabo autem voluptates eaque velit vero facere mollitia. Placeat rem, molestiae error obcaecati enim doloribus impedit aliquam, maiores qui minus neque.",
-  // },
+  {
+    id: "10",
+    title: "Fruit Tart",
+    price: 9.0,
+    image01: product_03_image_01,
+    image02: product_03_image_02,
+    image03: product_03_image_03,
+    category: "Desserts",
+    desc: "A buttery tart filled with custard and topped with fresh fruits.",
+  },
 ];
 
 export default products;

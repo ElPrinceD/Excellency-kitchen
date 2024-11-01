@@ -8,8 +8,23 @@
 }
 
 .product__img {
+  width: 150px; /* Adjust the width as needed */
+  height: 120px; /* Adjust the height as needed */
+  border-radius: 60%; /* This makes the image circular */
+  object-fit: cover; /* This ensures the image covers the area without distortion */
   margin-bottom: 20px;
-  transition: 0.4s;
+  transition: transform 0.4s; /* Smooth transition for scaling */
+}
+
+.product__description {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 10px;
+}
+
+.product__item.selected {
+  border: 2px solid #bf9d54;
+  background-color: rgba(223, 32, 32, 0.1);
 }
 
 .product__img:hover {
@@ -18,7 +33,7 @@
 
 .product__content h5 a {
   color: #212245;
-  font-style: 1rem;
+  font-style: normal; /* Correcting to 'normal' for proper styling */
 }
 
 .product__content h5 {
@@ -28,13 +43,13 @@
 .product__price {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #df2020;
+  color: #bf9d54;
 }
 
 .addTOCART__btn {
   border: none;
   padding: 7px 25px;
-  background: #df2020;
+  background: #bf9d54;
   color: #fff;
   border-radius: 5px;
   font-size: 0.9rem;

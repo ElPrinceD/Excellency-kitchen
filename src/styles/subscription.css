@@ -1,0 +1,22 @@
+.continue-btn {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: #df2020;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .continue-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .continue-btn:enabled{
+    background-color: #54bf8a;
+    border: none;
+    
+  }
+  

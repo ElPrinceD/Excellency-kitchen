@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Container } from "reactstrap";
-import logo from "../../assets/images/res-logo.png";
+import logo from "../../assets/images/Excellency-header-logo.png";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -15,13 +15,17 @@ const nav__links = [
     display: "Home",
     path: "/home",
   },
+  // {
+  //   display: "Foods",
+  //   path: "/pizzas",
+  // },
+  // {
+  //   display: "Cart",
+  //   path: "/cart",
+  // },
   {
-    display: "Foods",
-    path: "/pizzas",
-  },
-  {
-    display: "Cart",
-    path: "/cart",
+    display: "Chefs",
+    path: '/chefs'
   },
   {
     display: "Contact",
@@ -65,7 +69,7 @@ const Header = () => {
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo" onClick={() => navigate("/home")}>
             <img src={logo} alt="logo" />
-            <h5>Tasty Treat</h5>
+            
           </div>
           {/* ======= menu ======= */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
@@ -94,7 +98,7 @@ const Header = () => {
           </div>
 
           {/* ======== nav right icons ========= */}
-          <div className="nav__right d-flex align-items-center gap-4">
+          {/* <div className="nav__right d-flex align-items-center gap-4">
             <span className="cart__icon" onClick={toggleCart}>
               <i className="ri-shopping-basket-line"></i>
               <span className="cart__badge">{totalQuantity}</span>
@@ -103,7 +107,7 @@ const Header = () => {
             <span className="mobile__menu" onClick={toggleMenu}>
               <i className="ri-menu-line"></i>
             </span>
-          </div>
+          </div> */}
         </div>
       </Container>
     </header>

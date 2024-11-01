@@ -1,4 +1,21 @@
+.hero-section {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.hero__content-container {
+  background: #f9f8f6; /* Optional semi-transparent background for readability */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #000000;
+}
+
 .hero__content {
+  max-width: 300px;
   padding-top: 70px;
 }
 
@@ -8,7 +25,7 @@
 }
 
 .hero__title span {
-  color: #df2020;
+  color: #bf9d54;
 }
 
 .hero__content p {
@@ -23,9 +40,10 @@
   padding: 7px 20px;
   border-radius: 5px;
   cursor: pointer;
-  background: #df2020;
+  background: #bf9d54;
   color: #fff;
   font-weight: 600;
+  margin-top: 20px;
 }
 
 .order__btn:hover {
@@ -37,8 +55,22 @@
   text-decoration: none;
 }
 
-.hero__img {
-  margin: 40px;
+.hero__img-container {
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Ensure no overflow */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  border: none; /* Ensure no border on the container */
+}
+
+.hero__video {
+  height: 100%; /* Full container height */
+  width: 100%; /* Full container width */
+  margin: 0; /* Ensure no margin */
+  padding: 0; /* Ensure no padding */
+  border: none; /* Remove any border */
+  display: block; /* Avoid any inline spacing issues */
+  object-fit: cover; /* Cover the container */
 }
 
 @media only screen and (max-width: 768px) {
