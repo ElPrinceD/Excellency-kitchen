@@ -1,5 +1,5 @@
 .event-form {
-    background-image: url('../assets/images/Excellency_0007_catering-img-1.webp'); /* Replace with your image path */
+    background-image: url('../assets/images/PHOTO-2023-06-17-20-07-08.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -7,6 +7,19 @@
     align-items: center;
     justify-content: center;
     color: #fff;
+  }
+  .custom-input[type="date"]::-webkit-input-placeholder {
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .custom-input[type="date"]::-moz-placeholder {
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .custom-input[type="date"]:focus::-webkit-input-placeholder {
+    color: transparent;
   }
   
   .form-container {
@@ -47,6 +60,11 @@
     cursor: pointer;
     height: 100%;
     width: 100%;
+}
+.date-label{
+  color: black;
+  font-size: smaller;
+  justify-content: flex-start;
 }
 .custom-input {
     padding: 14px;

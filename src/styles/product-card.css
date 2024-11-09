@@ -8,8 +8,8 @@
 }
 
 .product__img {
-  width: 150px; /* Adjust the width as needed */
-  height: 120px; /* Adjust the height as needed */
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
   border-radius: 60%; /* This makes the image circular */
   object-fit: cover; /* This ensures the image covers the area without distortion */
   margin-bottom: 20px;
@@ -17,8 +17,8 @@
 }
 
 .product__description {
-  font-size: 0.9rem;
-  color: #777;
+  font-size: 1.5rem;
+  color: #1e1e1e;
   margin-top: 10px;
 }
 

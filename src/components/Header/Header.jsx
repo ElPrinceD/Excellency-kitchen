@@ -1,13 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Container } from "reactstrap";
 import logo from "../../assets/images/Excellency-header-logo.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { cartUiActions } from "../../store/shopping-cart/cartUiSlice";
-
 import "../../styles/header.css";
 
 const nav__links = [
@@ -15,17 +12,9 @@ const nav__links = [
     display: "Home",
     path: "/home",
   },
-  // {
-  //   display: "Foods",
-  //   path: "/pizzas",
-  // },
-  // {
-  //   display: "Cart",
-  //   path: "/cart",
-  // },
   {
     display: "Chefs",
-    path: '/chefs'
+    path: "/chefs",
   },
   {
     display: "Contact",
@@ -38,22 +27,21 @@ const Header = () => {
   const headerRef = useRef(null);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
-  let navigate = useNavigate();
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+    menuRef.current.classList.toggle("show__menu");
+  };
 
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
   };
 
-  console.log(menuRef?.current?.classList.value);
-
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
+      if (window.scrollY > 80) {
         headerRef.current.classList.add("header__shrink");
       } else {
         headerRef.current.classList.remove("header__shrink");
@@ -67,11 +55,12 @@ const Header = () => {
     <header className="header" ref={headerRef}>
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
+          {/* Logo */}
           <div className="logo" onClick={() => navigate("/home")}>
             <img src={logo} alt="logo" />
-            
           </div>
-          {/* ======= menu ======= */}
+
+          {/* Navigation Menu (visible on larger screens) */}
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <div
               className="menu d-flex align-items-center gap-5"
@@ -79,7 +68,7 @@ const Header = () => {
             >
               <div className="header__closeButton">
                 <span onClick={toggleMenu}>
-                  <i className="ri-close-fill"></i>
+                  <i className={menuOpen ? "ri-close-fill" : "ri-menu-line"}></i>
                 </span>
               </div>
               {nav__links.map((item, index) => (
@@ -87,7 +76,7 @@ const Header = () => {
                   to={item.path}
                   key={index}
                   className={(navClass) =>
-                    navClass.isActive ? "active__menu" : ""
+                    navClass.isActive ? "active__menu nav__link-item" : "menu_item nav__link-item"
                   }
                   onClick={toggleMenu}
                 >
@@ -97,17 +86,10 @@ const Header = () => {
             </div>
           </div>
 
-          {/* ======== nav right icons ========= */}
-          {/* <div className="nav__right d-flex align-items-center gap-4">
-            <span className="cart__icon" onClick={toggleCart}>
-              <i className="ri-shopping-basket-line"></i>
-              <span className="cart__badge">{totalQuantity}</span>
-            </span>
-            
-            <span className="mobile__menu" onClick={toggleMenu}>
-              <i className="ri-menu-line"></i>
-            </span>
-          </div> */}
+          {/* Mobile Menu Toggle (only visible on smaller screens) */}
+          <span className="mobile__menu" onClick={toggleMenu}>
+            <i className={menuOpen ? "ri-close-fill" : "ri-menu-line"}></i>
+          </span>
         </div>
       </Container>
     </header>
