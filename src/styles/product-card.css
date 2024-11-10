@@ -8,12 +8,17 @@
 }
 
 .product__img {
-  width: 100px; /* Adjust the width as needed */
-  height: 100px; /* Adjust the height as needed */
-  border-radius: 60%; /* This makes the image circular */
-  object-fit: cover; /* This ensures the image covers the area without distortion */
+  width: 60%;
+  /* Adjust the width as needed */
+  height: 60%;
+  /* Adjust the height as needed */
+  border-radius: 60%;
+  /* This makes the image circular */
+  object-fit: cover;
+  /* This ensures the image covers the area without distortion */
   margin-bottom: 20px;
-  transition: transform 0.4s; /* Smooth transition for scaling */
+  transition: transform 0.4s;
+  /* Smooth transition for scaling */
 }
 
 .product__description {
@@ -21,6 +26,46 @@
   color: #1e1e1e;
   margin-top: 10px;
 }
+
+/* CSS to style the custom checkbox */
+.checkbox-container input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Style the checkmark when the checkbox is checked */
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #bf9d54;
+  /* Set the background color when checked */
+  border-color: #bf9d54;
+  /* Set the border color */
+}
+
+/* Style the checkmark inside the checkbox */
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  /* Checkmark color */
+  transform: rotate(45deg);
+  border: 2px solid #fff;
+  /* Border color for the checkmark */
+  border-width: 0 2px 2px 0;
+}
+
 
 .product__item.selected {
   border: 2px solid #bf9d54;
@@ -33,7 +78,8 @@
 
 .product__content h5 a {
   color: #212245;
-  font-style: normal; /* Correcting to 'normal' for proper styling */
+  font-style: normal;
+  /* Correcting to 'normal' for proper styling */
 }
 
 .product__content h5 {
@@ -59,9 +105,11 @@
   .product__content h5 a {
     font-size: 0.8rem;
   }
+
   .product__item {
     padding: 20px;
   }
+
   .addTOCart__btn {
     padding: 5px 15px;
     font-size: 0.7rem;

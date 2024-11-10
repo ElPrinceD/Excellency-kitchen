@@ -40,16 +40,19 @@ const Header = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       if (window.scrollY > 80) {
         headerRef.current.classList.add("header__shrink");
       } else {
         headerRef.current.classList.remove("header__shrink");
       }
-    });
+    };
 
-    return () => window.removeEventListener("scroll");
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll); // Corrected usage
   }, []);
+
 
   return (
     <header className="header" ref={headerRef}>

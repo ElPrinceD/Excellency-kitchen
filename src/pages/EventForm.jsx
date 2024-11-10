@@ -7,6 +7,7 @@ const EventForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
+  const [hall, setHall] = useState(""); // State for Hall selection
 
   // Set default date to today's date on component mount
   useEffect(() => {
@@ -16,8 +17,8 @@ const EventForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Navigate to the Subscription page with the name
-    navigate("/subscription", { state: { userName: name } });
+    // Navigate to the Subscription page with the name and hall selection
+    navigate("/subscription", { state: { userName: name, selectedHall: hall } });
   };
 
   return (
@@ -38,7 +39,7 @@ const EventForm = () => {
                     required
                   />
                 </FormGroup>
-                
+
                 <FormGroup>
                   <Input
                     type="email"
@@ -46,12 +47,9 @@ const EventForm = () => {
                     className="custom-input"
                     required
                   />
-
-                
                 </FormGroup>
 
                 <FormGroup>
-                
                   <Input
                     type="date"
                     placeholder="Date"
@@ -61,6 +59,7 @@ const EventForm = () => {
                     required
                   />
                 </FormGroup>
+
                 <FormGroup>
                   <Input
                     type="number"
@@ -69,6 +68,26 @@ const EventForm = () => {
                     required
                   />
                 </FormGroup>
+
+
+                <FormGroup>
+                  <Label for="hallSelect">Select Hall</Label>
+                  <Input
+                    type="select"
+                    id="hallSelect"
+                    value={hall}
+                    onChange={(e) => setHall(e.target.value)}
+                    required
+                  >
+                    <option value="">Select a Hall</option>
+                    <option value="Aramesh">Aramesh</option>
+                    <option value="Balmayna">Balmayna</option>
+                    <option value="Bellisima">Bellisima</option>
+                    <option value="Jumeirah">Jumeirah</option>
+                    <option value="Palm Suite">Palm Suite</option>
+                  </Input>
+                </FormGroup>
+
                 <Button type="submit" className="submit-btn">Submit</Button>
               </Form>
             </div>

@@ -1,0 +1,29 @@
+.category-image-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.category-image {
+    max-height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .category-image {
+        height: 400px;
+        /* Control the height on mobile */
+
+        /* Keep image centered */
+    }
+}
+
+@media (max-width: 576px) {
+    .category-image {
+        height: 250px;
+        margin-top: -45;
+        /* Even smaller height on extra small screens */
+    }
+}
