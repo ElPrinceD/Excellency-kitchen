@@ -6,8 +6,10 @@ import "../styles/event-form.css";
 const EventForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
-  const [hall, setHall] = useState(""); // State for Hall selection
+  const [guests, setGuests] = useState("");
+  const [hall, setHall] = useState("");
 
   // Set default date to today's date on component mount
   useEffect(() => {
@@ -30,9 +32,11 @@ const EventForm = () => {
               <h2 className="form-title">Reservation Details</h2>
               <Form onSubmit={handleSubmit}>
                 <FormGroup>
+                  <Label for="contractHolderName">Contract Holder Name</Label>
                   <Input
                     type="text"
-                    placeholder="Contract Holder Name"
+                    id="contractHolderName"
+                    placeholder="Enter contract holder's name"
                     className="custom-input"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -41,18 +45,23 @@ const EventForm = () => {
                 </FormGroup>
 
                 <FormGroup>
+                  <Label for="emailAddress">Email Address</Label>
                   <Input
                     type="email"
-                    placeholder="Email Address"
+                    id="emailAddress"
+                    placeholder="Enter email address"
                     className="custom-input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </FormGroup>
 
                 <FormGroup>
+                  <Label for="eventDate">Event Date</Label>
                   <Input
                     type="date"
-                    placeholder="Date"
+                    id="eventDate"
                     className="custom-input"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
@@ -61,14 +70,17 @@ const EventForm = () => {
                 </FormGroup>
 
                 <FormGroup>
+                  <Label for="numberOfGuests">Number of Guests</Label>
                   <Input
                     type="number"
-                    placeholder="Number of Guests"
+                    id="numberOfGuests"
+                    placeholder="Enter number of guests"
                     className="custom-input"
+                    value={guests}
+                    onChange={(e) => setGuests(e.target.value)}
                     required
                   />
                 </FormGroup>
-
 
                 <FormGroup>
                   <Label for="hallSelect">Select Hall</Label>
@@ -88,7 +100,7 @@ const EventForm = () => {
                   </Input>
                 </FormGroup>
 
-                <Button type="submit" className="submit-btn">Submit</Button>
+                <Button type="submit" className="submit-btn">Next Page</Button>
               </Form>
             </div>
           </Col>

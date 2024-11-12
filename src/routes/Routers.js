@@ -12,6 +12,7 @@ import Chefs from "../pages/Chefs";
 import RegisterClientPage from "../pages/RegisterClient";
 import SummaryPage from "../pages/Summary";
 import AdminPage from "../pages/Admin";
+import WelcomePage from "../pages/WelcomePage";
 
 const Routers = () => {
   return (
@@ -19,6 +20,7 @@ const Routers = () => {
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/chefs" element={<Chefs />} />
       <Route path='/subscription' element={<Subscription />} />
+      <Route path='/welcome' element={<WelcomePage />} />
       <Route path="/home" element={<Home />} />
       <Route path="/pizzas" element={<Pizzas />} />
       <Route path="/cart" element={<Cart />} />

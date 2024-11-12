@@ -1,0 +1,71 @@
+/* Style for the Password column */
+.password-column {
+    background-color: green;
+    /* Dark green for Password column */
+    color: white;
+}
+
+/* Style for the Password Sent Date column */
+.password-sent-column {
+    background-color: darkgreen;
+    /* Dark green for header */
+    color: white;
+}
+
+/* Lighter green background for Password Sent Date cells */
+.password-sent-column td {
+    background-color: lightgreen;
+    /* Lighter green for data */
+}
+
+/* Custom Row Colors Based on Hall */
+.bellisima-color {
+    background-color: #8E44AD;
+    /* Purple color for Bellisima Hall */
+    color: white;
+}
+
+.bellisima-simple-color {
+    background-color: #3498DB;
+    /* Blue color for Bellisima */
+    color: white;
+}
+
+.balmayna-color {
+    background-color: #2ECC71;
+    /* Green color for Balmayna */
+    color: white;
+}
+
+.bellisima-color,
+.bellisima-simple-color,
+.balmayna-color {
+    /* Ensuring rows have distinct striped effect */
+    border-bottom: 1px solid #ddd;
+}
+
+
+.versailles-color {
+    background-color: #fc03e3;
+}
+
+.balmanya-color {
+    background-color: ;
+}
+
+
+.bellisima-color {
+    background-color: #3b49eb;
+}
+
+.jomaireh-color {
+    background-color: #ed6802;
+}
+
+.palmSuite-color {
+    background-color: #f5c907;
+}
+
+.lotus-color {
+    background-color: #7fbceb;
+}

@@ -3,16 +3,20 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import products from "../assets/fake-data/products";
 import SelectableProductCard from "../components/UI/product-card/SelectableProductCard";
+import salads from '../assets/images/WAQA5665.JPG'
+import Starters from '../assets/images/WAQA5525.JPG'
+import curries from '../assets/images/WAQA5590.JPG'
+import rice from '../assets/images/WAQA5557.JPG'
 import Helmet from "../components/Helmet/Helmet";
 import '../styles/pizzas.css'
 
 const categories = ["Salads", "Starters", "Rice Dishes", "Curries", "Desserts"];
 
 const categoryImages = {
-  "Salads": "https://img.freepik.com/free-photo/fresh-salad-with-vegetables_1150-22132.jpg",
-  "Starters": "https://img.freepik.com/free-photo/appetizers-food-plate_1150-15545.jpg",
-  "Rice Dishes": "https://img.freepik.com/free-photo/delicious-indian-rice-dish-biryani_1150-6986.jpg",
-  "Curries": "https://img.freepik.com/free-photo/indian-curry-chicken-curry-rice_1150-5263.jpg",
+  "Salads": salads,
+  "Starters": Starters,
+  "Rice Dishes": rice,
+  "Curries": curries,
   "Desserts": "https://img.freepik.com/free-photo/delicious-dessert-with-chocolate_1150-1342.jpg"
 };
 

@@ -20,6 +20,11 @@ const nav__links = [
     display: "Contact",
     path: "/contact",
   },
+  {
+    display: "Reservations",
+    path: "/admin", // Admin's reservations page
+  },
+
 ];
 
 const Header = () => {

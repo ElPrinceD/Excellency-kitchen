@@ -1,41 +1,68 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
+import '../styles/register.css';
+import { makeReservation } from "../api/reservation";
+import { getAuthToken } from "../utils/auth";
+import { useNavigate } from "react-router-dom";
 
 const RegisterClientPage = () => {
     const [clientName, setClientName] = useState("");
     const [contactNumber, setContactNumber] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
+    const [subscriptionType, setSubscriptionType] = useState("")
     const [numberOfPeople, setNumberOfPeople] = useState("");
     const [hall, setHall] = useState("");
     const [eventDate, setEventDate] = useState("");
+    const [eventTime, setEventTime] = useState("");
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
+    const navigate = useNavigate();
 
-    const handleRegister = (e) => {
+    const [validationError, setValidationError] = useState("");
+
+    // Function to generate a random password based on name and hall
+
+
+    const handleRegister = async (e) => {
         e.preventDefault();
+        if (!clientName || !contactNumber || !email || !address || !numberOfPeople || !hall || !eventDate || !eventTime) {
+            setValidationError("Please fill in all required fields.");
+            setRegistrationSuccess(false);
+            return;
+        }
 
-        // Simulate API call to register the client
+        setValidationError("");
+
         const newClient = {
-            name: clientName,
-            contactNumber: contactNumber,
-            email: email,
-            address: address,
-            numberOfPeople: numberOfPeople,
-            hall: hall,
-            eventDate: eventDate,
+            client_name: clientName,
+            contact_number: contactNumber,
+            email,
+            address,
+            number_of_people: numberOfPeople,
+            hall,
+            meal_subscription: subscriptionType,
+            date: eventDate,
+            time: eventTime,
         };
 
-        console.log("Registered client:", newClient);
+        const token = getAuthToken(); // Retrieve the token from localStorage
 
-        // Reset form and show success message
-        setClientName("");
-        setContactNumber("");
-        setEmail("");
-        setAddress("");
-        setNumberOfPeople("");
-        setHall("");
-        setEventDate("");
-        setRegistrationSuccess(true);
+        try {
+            const response = await makeReservation(newClient, token);
+            setRegistrationSuccess(true);
+            // Reset form after successful registration
+            setClientName("");
+            setContactNumber("");
+            setEmail("");
+            setAddress("");
+            setNumberOfPeople("");
+            setHall("");
+            setEventDate("");
+            setEventTime("");
+            navigate("/admin");
+        } catch (error) {
+            setValidationError(error);
+        }
 
         // Remove success message after 3 seconds
         setTimeout(() => setRegistrationSuccess(false), 3000);
@@ -44,20 +71,30 @@ const RegisterClientPage = () => {
     return (
         <Container>
             <h2 className="mb-4">Register New Client</h2>
+
+            {/* Show red alert for validation errors */}
+            {validationError && (
+                <Alert color="danger" className="rounded-lg shadow-sm">
+                    {validationError}
+                </Alert>
+            )}
+
+            {/* Show green alert for successful registration */}
             {registrationSuccess && (
                 <Alert color="success" className="rounded-lg shadow-sm">
                     Client registered successfully!
                 </Alert>
             )}
+
             <Form onSubmit={handleRegister}>
                 <Row form>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for="clientName">Client Name</Label>
+                            <Label for="clientName">Client Contract Name</Label>
                             <Input
                                 type="text"
                                 id="clientName"
-                                placeholder="Enter client's name"
+                                placeholder="Enter client's contract name"
                                 value={clientName}
                                 onChange={(e) => setClientName(e.target.value)}
                                 required
@@ -101,11 +138,64 @@ const RegisterClientPage = () => {
                                 placeholder="Enter address"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
-                                required
+
                             />
                         </FormGroup>
                     </Col>
                 </Row>
+                <FormGroup>
+                    <Label for="Suscription">Dish Subscription</Label>
+                    <div className="horizontal-options">
+                        <div
+                            className="square-radio-btn"
+                            onClick={() => setSubscriptionType("Silver")}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <input
+                                type="radio"
+                                name="subscription"
+                                value="Silver"
+                                checked={subscriptionType === "Silver"}
+                                onChange={() => setSubscriptionType("Silver")}
+                                required
+                                style={{ marginRight: "8px" }}
+                            />
+                            <span className="normal-text">Silver</span>
+                        </div>
+                        <div
+                            className="square-radio-btn"
+                            onClick={() => setSubscriptionType("Gold")}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <input
+                                type="radio"
+                                name="subscription"
+                                value="Gold"
+                                checked={subscriptionType === "Gold"}
+                                onChange={() => setSubscriptionType("Gold")}
+                                required
+                                style={{ marginRight: "8px" }}
+                            />
+                            <span className="normal-text">Gold</span>
+                        </div>
+                        <div
+                            className="square-radio-btn"
+                            onClick={() => setSubscriptionType("Platinum")}
+                            style={{ cursor: "pointer" }}
+                        >
+                            <input
+                                type="radio"
+                                name="subscription"
+                                value="Platinum"
+                                checked={subscriptionType === "Platinum"}
+                                onChange={() => setSubscriptionType("Platinum")}
+                                required
+                                style={{ marginRight: "8px" }}
+                            />
+                            <span className="normal-text">Platinum</span>
+                        </div>
+                    </div>
+                </FormGroup>
                 <Row form>
                     <Col md={6}>
                         <FormGroup>
@@ -123,20 +213,110 @@ const RegisterClientPage = () => {
                     <Col md={6}>
                         <FormGroup>
                             <Label for="hall">Hall</Label>
-                            <Input
-                                type="select"
-                                id="hall"
-                                value={hall}
-                                onChange={(e) => setHall(e.target.value)}
-                                required
-                            >
-                                <option value="">Select a hall</option>
-                                <option value="Bellisima">Bellisima</option>
-                                <option value="Versaille">Versaille</option>
-                                <option value="Balmayna">Balmayna</option>
-                                <option value="Lotus">Lotus</option>
-                            </Input>
+                            <div className="horizontal-options">
+                                {/* Custom radio buttons with hall-specific text color */}
+                                <div
+                                    className="square-radio-btn"
+                                    onClick={() => setHall("Bellisima")}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="hall"
+                                        value="Bellisima"
+                                        checked={hall === "Bellisima"}
+                                        onChange={() => setHall("Bellisima")}
+                                        required
+                                        style={{ marginRight: "8px" }}
+                                    />
+                                    <span className={hall === "Bellisima" ? "bellisima-text-color" : "bellisima-text-color"}>
+                                        Bellisima
+                                    </span>
+                                </div>
+
+                                <div
+                                    className="square-radio-btn"
+                                    onClick={() => setHall("Versaille")}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="hall"
+                                        value="Versaille"
+                                        checked={hall === "Versaille"}
+                                        onChange={() => setHall("Versaille")}
+                                        required
+                                        style={{ marginRight: "8px" }}
+                                    />
+                                    <span className={hall === "Versaille" ? "versailles-text-color" : "versailles-text-color"}>
+                                        Versaille
+                                    </span>
+                                </div>
+
+
+
+                                <div
+                                    className="square-radio-btn"
+                                    onClick={() => setHall("Lotus")}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="hall"
+                                        value="Lotus"
+                                        checked={hall === "Lotus"}
+                                        onChange={() => setHall("Lotus")}
+                                        required
+                                        style={{ marginRight: "8px" }}
+                                    />
+                                    <span className={hall === "Lotus" ? "lotus-text-color" : "lotus-text-color"}>
+                                        Lotus
+                                    </span>
+                                </div>
+
+                                <div
+                                    className="square-radio-btn"
+                                    onClick={() => setHall("Jomaireh")}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="hall"
+                                        value="Jomaireh"
+                                        checked={hall === "Jomaireh"}
+                                        onChange={() => setHall("Jomaireh")}
+                                        required
+                                        style={{ marginRight: "8px" }}
+                                    />
+                                    <span className={hall === "Jomaireh" ? "jomaireh-text-color" : "jomaireh-text-color"}>
+                                        Jomaireh
+                                    </span>
+                                </div>
+
+                                <div
+                                    className="square-radio-btn"
+                                    onClick={() => setHall("Palm")}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <input
+                                        type="radio"
+                                        name="hall"
+                                        value="Palm"
+                                        checked={hall === "Palm"}
+                                        onChange={() => setHall("Palm")}
+                                        required
+                                        style={{ marginRight: "8px" }}
+                                    />
+                                    <span className={hall === "Palm" ? "palmSuite-text-color" : "palmSuite-text-color"}>
+                                        Palm
+                                    </span>
+                                </div>
+                            </div>
                         </FormGroup>
+
+
+
+
                     </Col>
                 </Row>
                 <Row form>
@@ -152,11 +332,44 @@ const RegisterClientPage = () => {
                             />
                         </FormGroup>
                     </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="eventTime">Event Time</Label>
+                            <div>
+                                <Label check>
+                                    <Input
+                                        type="radio"
+                                        name="eventTime"
+                                        value="AM"
+                                        checked={eventTime === "AM"}
+                                        onChange={() => setEventTime("AM")}
+                                        required
+                                    />
+                                    AM
+                                </Label>
+                                <Label check className="ml-5">
+                                    <Input
+                                        type="radio"
+                                        name="eventTime"
+                                        value="PM"
+                                        checked={eventTime === "PM"}
+                                        onChange={() => setEventTime("PM")}
+                                        required
+                                    />
+                                    PM
+                                </Label>
+                            </div>
+                        </FormGroup>
+                    </Col>
                 </Row>
                 <Button type="submit" color="primary" className="rounded-lg shadow-sm">
                     Register Client
                 </Button>
+
+
+
             </Form>
+
         </Container>
     );
 };

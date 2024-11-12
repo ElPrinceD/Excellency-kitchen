@@ -1,0 +1,75 @@
+/* Add this CSS to your styles */
+.square-radio-btn input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+    border: 2px solid #000;
+    margin-right: 8px;
+}
+
+.square-radio-btn input[type="radio"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.horizontal-options {
+    display: flex;
+    gap: 16px;
+    /* Adjust spacing between items */
+    flex-wrap: wrap;
+    /* This allows wrapping to the next line if needed */
+}
+
+
+.versailles-color {
+    color: #fc03e3;
+    /* Pinkish color */
+}
+
+.bellisima-color {
+    color: #3b49eb;
+    /* Blue color */
+}
+
+.jomaireh-color {
+    color: #ed6802;
+    /* Orange color */
+}
+
+.palmSuite-color {
+    color: #f5c907;
+    /* Yellow color */
+}
+
+.lotus-color {
+    color: #7fbceb;
+    /* Light blue color */
+}
+
+.bellisima-text-color {
+    color: #3b49eb;
+}
+
+.normal-text {
+    color: #0a0a0a
+}
+
+.versailles-text-color {
+    color: #fc03e3;
+}
+
+.balmyna-text-color {
+    color: #ed6802;
+}
+
+.lotus-text-color {
+    color: #7fbceb;
+}
+
+.jomaireh-text-color {
+    color: #ed6802;
+}
+
+.palmSuite-text-color {
+    color: #f5c907;
+}

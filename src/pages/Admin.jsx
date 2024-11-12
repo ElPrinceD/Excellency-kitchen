@@ -1,61 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Table, Button, Input } from "reactstrap";
+import { getReservations } from "../api/reservation";
+import { getAuthToken } from "../utils/auth";
+import '../styles/admin.css';
 
 const AdminPage = () => {
   const [reservations, setReservations] = useState([]);
   const [filteredReservations, setFilteredReservations] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+  const token = getAuthToken();
 
   useEffect(() => {
-    // Fetch reservations from API or use static data
     const fetchReservations = async () => {
-      const data = [
-        {
-          reservationId: 1,
-          customerName: "John Doe",
-          hall: "Grand Hall",
-          mealSelections: [
-            { mealName: "Salad", quantity: 2 },
-            { mealName: "Starter", quantity: 1 },
-            { mealName: "Dessert", quantity: 1 }
-          ],
-          reservationDate: "2024-11-06T12:30:00"
-        },
-        {
-          reservationId: 2,
-          customerName: "Jane Smith",
-          hall: "Bellisima",
-          mealSelections: [
-            { mealName: "Curries", quantity: 2 }
-          ],
-          reservationDate: "2024-11-06T13:00:00"
-        },
-        {
-          reservationId: 3,
-          customerName: "Jim Brown",
-          hall: "Balmayna",
-          mealSelections: [
-            { mealName: "Rice Dishes", quantity: 2 }
-          ],
-          reservationDate: "2024-12-07T11:00:00"
-        }
-      ];
-      setReservations(data);
-      setFilteredReservations(data); // Initially show all reservations
+      try {
+        const data = await getReservations(token);
+        setReservations(data);
+        setFilteredReservations(data); // Initially show all reservations
+      } catch (error) {
+        console.error(error.message);
+      }
     };
 
     fetchReservations();
   }, []);
 
-  // Handle filtering reservations based on date and search query
   useEffect(() => {
     if (searchQuery || selectedDate) {
       const filtered = reservations.filter((reservation) => {
-        const reservationDate = new Date(reservation.reservationDate).toISOString().split('T')[0];
+        const reservationDate = reservation.date;
         const matchesDate = selectedDate ? reservationDate === selectedDate : true;
         const matchesSearch = searchQuery
-          ? reservation.customerName.toLowerCase().includes(searchQuery.toLowerCase())
+          ? reservation.client_name.toLowerCase().includes(searchQuery.toLowerCase())
           : true;
         return matchesDate && matchesSearch;
       });
@@ -65,16 +41,26 @@ const AdminPage = () => {
     }
   }, [searchQuery, selectedDate, reservations]);
 
+  const getRowColor = (hall) => {
+    switch (hall) {
+      case "Bellisima":
+        return "success";
+      case "Balmayna":
+        return "danger";
+      default:
+        return "";
+    }
+  };
+
   return (
     <Container>
       <h2 className="mb-4">Reservations</h2>
 
-      {/* Search and Date Filter Section */}
       <Row className="mb-4">
         <Col md={4}>
           <Input
             type="text"
-            placeholder="Search by Customer Name"
+            placeholder="Search by Client Name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="rounded-lg shadow-sm"
@@ -88,47 +74,54 @@ const AdminPage = () => {
             className="rounded-lg shadow-sm"
           />
         </Col>
-        <Col md={2}>
-          <Button
-            onClick={() => {
-              setFilteredReservations(reservations); // Optional reset on button click
-            }}
-            className="btn-dark rounded-lg shadow-sm"
-          >
-            Filter by Date
-          </Button>
-        </Col>
       </Row>
 
-      {/* Reservations Table */}
       <Row>
         <Col>
           <Table striped bordered responsive>
             <thead>
               <tr>
-                <th>Reservation ID</th>
-                <th>Customer Name</th>
-                <th>Hall</th>
-                <th>Meal Selections</th>
-                <th>Reservation Date</th>
+                <th>ID</th>
+                <th>Client Name</th>
+                <th>Date</th>
+                <th>Contact Number</th>
+
+                <th>Address</th>
+                <th>Number</th>
+                <th>Venue</th>
+                <th>Package</th>
+                <th>Time</th>
+
+                <th>Pending Menu Date</th>
+                <th>Confirmed Menu Date</th>
+
               </tr>
             </thead>
             <tbody>
               {filteredReservations.map((reservation) => (
-                <tr key={reservation.reservationId}>
-                  <td>{reservation.reservationId}</td>
-                  <td>{reservation.customerName}</td>
+                <tr key={reservation.id} className={getRowColor(reservation.hall)}>
+                  <td>{reservation.id}</td>
+                  <td>{reservation.client_name}</td>
+                  <td>{new Date(reservation.date).toLocaleDateString()}</td>
+                  <td>{reservation.contact_number}</td>
+
+                  <td>{reservation.address}</td>
+                  <td>{reservation.number_of_people}</td>
                   <td>{reservation.hall}</td>
+                  <td>{reservation.meal_subscription}</td>
+                  <td>{reservation.time}</td>
+
                   <td>
-                    <ul>
-                      {reservation.mealSelections.map((meal, index) => (
-                        <li key={index}>
-                          {meal.mealName} (x{meal.quantity})
-                        </li>
-                      ))}
-                    </ul>
+                    {reservation.dishes.length > 0 ? (
+                      <ul>
+                        {reservation.dishes.map((dish, index) => (
+                          <li key={index}>{dish}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      "Not selected yet"
+                    )}
                   </td>
-                  <td>{new Date(reservation.reservationDate).toLocaleString()}</td>
                 </tr>
               ))}
             </tbody>

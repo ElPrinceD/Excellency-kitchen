@@ -7,7 +7,7 @@ const SummaryPage = () => {
   const { selectedItems } = location.state || {};  // Retrieve selected items from state
 
   // Flatten all selected items for display
-  const allSelectedItems = Object.values(selectedItems).flat();
+  const allSelectedItems = Object.values(selectedItems || {}).flat();
 
   return (
     <Container>
@@ -24,7 +24,9 @@ const SummaryPage = () => {
             </Col>
           ))
         ) : (
-          <p>No items selected.</p>
+          <Col>
+            <p>No items selected.</p>
+          </Col>
         )}
       </Row>
       <div className="d-flex justify-content-end mt-4">
