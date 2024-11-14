@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Input, Button, Label } from "reactstrap";
+import { getReservations } from "../api/reservation"; // Adjust the import path as needed
+import { getAuthToken } from "../utils/auth";
 import "../styles/event-form.css";
 
 const EventForm = () => {
@@ -10,16 +12,34 @@ const EventForm = () => {
   const [date, setDate] = useState("");
   const [guests, setGuests] = useState("");
   const [hall, setHall] = useState("");
+  const token = getAuthToken();
 
-  // Set default date to today's date on component mount
   useEffect(() => {
-    const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
-    setDate(today); // Set the default date state
+    // Fetch the user's reservation details on component mount
+    const fetchReservationDetails = async () => {
+      try {
+
+        const reservation = await getReservations(token);
+
+        // Assume the API returns an array of reservations and we use the first entry for simplicity
+        if (reservation) {
+          // Adjust if necessary
+          setName(reservation.client_name || "");
+          setEmail(reservation.email || "");
+          setDate(reservation.date || "");
+          setGuests(reservation.number_of_people || "");
+          setHall(reservation.hall || "");
+        }
+      } catch (error) {
+        console.error("Failed to load reservation details:", error.message);
+      }
+    };
+
+    fetchReservationDetails();
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Navigate to the Subscription page with the name and hall selection
     navigate("/subscription", { state: { userName: name, selectedHall: hall } });
   };
 

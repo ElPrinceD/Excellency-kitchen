@@ -1,41 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Container, Row, Col, Button } from "reactstrap";
+import { getReservationById } from "../api/reservation";
 import SubscriptionCard from "../components/UI/subcription/SubscriptionCard";
 import Helmet from "../components/Helmet/Helmet";
+import { getAuthToken } from "../utils/auth";
 import "../styles/pagination.css";
 import "../styles/subscription.css";
 
 // Define the subscription options with their respective meal limits
 const subscriptionOptions = [
   {
-    id: "silver",
+    id: "Silver",
     title: "Silver Menu",
     image: "https://img.freepik.com/free-vector/silver-metal-background-1_78370-324.jpg?semt=ais_hybrid",
-    description: "£27.50 Per Head\n1 Salad\n3 Starters\n1 Rice Dish\n3 Curries\n1 Dessert",
-    limits: { Salads: 1, Starters: 3, "Rice Dishes": 1, Curries: 3, Desserts: 1 },
+    description: "£27.50 Per Head\n1 Salad\n3 Starters\n1 Rice Dish\n3 Curries\n1 Dessert\n2 Chutneys",
+    limits: { Salads: 1, Starters: 3, "Rice Dishes": 1, Curries: 3, Desserts: 1, Chutneys: 2 },
   },
   {
-    id: "gold",
+    id: "Gold",
     title: "Gold Menu",
     image: "https://img.freepik.com/free-photo/golden-foil-texture-background-shiny-wrapping-paper-decoration-element_211682-61.jpg?semt=ais_hybrid",
-    description: "£35 Per Head\n3 Salads\n5 Starters (including lamb leg)\n2 Rice Dishes\n3 Curries\n2 Desserts",
-    limits: { Salads: 3, Starters: 5, "Rice Dishes": 2, Curries: 3, Desserts: 2 },
+    description: "£35 Per Head\n3 Salads\n5 Starters (including lamb leg)\n2 Rice Dishes\n3 Curries\n2 Desserts\n3 Chutneys",
+    limits: { Salads: 3, Starters: 5, "Rice Dishes": 2, Curries: 3, Desserts: 2, Chutneys: 3 },
   },
   {
-    id: "platinum",
+    id: "Platinum",
     title: "Platinum Menu",
     image: "https://img.freepik.com/free-vector/silver-foil-metallic-texture-background-design_1048-15718.jpg?semt=ais_hybrid",
-    description: "£45 Per Head\n5 Salads\n7 Starters\n3 Rice Dishes\n5 Curries\n3 Desserts\nSpecial Drinks Included",
-    limits: { Salads: 5, Starters: 7, "Rice Dishes": 3, Curries: 5, Desserts: 3 },
+    description: "£45 Per Head\n5 Salads\n7 Starters\n3 Rice Dishes\n5 Curries\n3 Desserts\n4 Chutneys\nSpecial Drinks Included",
+    limits: { Salads: 5, Starters: 7, "Rice Dishes": 3, Curries: 5, Desserts: 3, Chutneys: 4 },
   },
 ];
 
 const Subscription = () => {
   const { state } = useLocation();
+  const location = useLocation();
+  const token = getAuthToken();
+  const { reservationId } = location.state || {};
+  console.log("Subscription Page", reservationId)
   const userName = state?.userName || "Guest"; // Get the user's name from state or default to 'Guest'
   const [selectedSubscription, setSelectedSubscription] = useState(null);
+  const [reservationDetails, setReservationDetails] = useState(null);
   const navigate = useNavigate();
+
+  // Fetch reservation details using reservationId
+  useEffect(() => {
+    const fetchReservationDetails = async () => {
+      try {
+        // Assuming fetchReservationById is a function that fetches reservation details
+        const reservation = await getReservationById(reservationId, token);
+        console.log(reservation)
+        setReservationDetails(reservation);
+
+        // If reservation has subscription info, set the selected subscription
+        if (reservation && reservation.meal_subscription) {
+          setSelectedSubscription(reservation.meal_subscription);
+        }
+      } catch (error) {
+        console.error("Error fetching reservation details:", error);
+      }
+    };
+
+    if (reservationId) {
+      fetchReservationDetails();
+    }
+  }, [reservationId]);
 
   // Handle subscription selection
   const handleSelect = (id) => {
@@ -49,10 +79,11 @@ const Subscription = () => {
 
       // Pass selected subscription limits and subscription type to the next page
       if (selectedOption) {
-        navigate("/pizzas", {
+        navigate("/options", {
           state: {
             limits: selectedOption.limits,
             subscriptionType: selectedOption.title,
+            reservationId: reservationId
           }
         });
       }
@@ -76,7 +107,7 @@ const Subscription = () => {
               <SubscriptionCard
                 item={option}
                 selectedSubscription={selectedSubscription}
-                onSelect={handleSelect}
+
               />
             </Col>
           ))}
@@ -87,7 +118,7 @@ const Subscription = () => {
             onClick={handleContinue}
             disabled={!selectedSubscription}
           >
-            Continue
+            Next Page
           </Button>
         </div>
       </Container>

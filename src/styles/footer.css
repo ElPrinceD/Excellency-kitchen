@@ -25,6 +25,14 @@
   line-height: 29px;
 }
 
+@media print {
+
+  /* Hide the footer */
+  footer {
+    display: none;
+  }
+}
+
 .delivery__time-item {
   display: flex;
   margin: 0;

@@ -1,0 +1,93 @@
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    /* Adds space between individual buttons */
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.page-title {
+    margin-top: 20px;
+    /* Adjust as needed */
+    color: #bf9d54;
+    /* Match the highlight color */
+    font-size: 2rem;
+    /* Adjust font size as needed */
+    font-weight: bold;
+    /* Make the title stand out */
+}
+
+.next-page-btn {
+    background-color: grey;
+    /* Default disabled state */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+.next-page-btn.enabled {
+    background-color: green;
+    /* Enabled state */
+    cursor: pointer;
+}
+
+/* Optional hover effect */
+.next-page-btn.enabled:hover {
+    background-color: darkgreen;
+}
+
+.option-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border-color: #bf9d54;
+    background-color: #e6dcdc;
+    color: transparent;
+    transition: all 0.1s ease;
+    min-width: 100px;
+    /* Ensures a minimum width for smaller screens */
+    text-align: center;
+}
+
+.option-btn.selected {
+    background-color: #bf9d54;
+    /* Highlight color */
+    color: #fff;
+}
+
+.option-btn:hover {
+    background-color: #ddd;
+    color: #bf9d54;
+}
+
+/* Responsive styling for phone views */
+@media (max-width: 768px) {
+    .option-btn {
+        font-size: 0.9rem;
+        /* Slightly smaller font on smaller screens */
+        padding: 10px 20px;
+        min-width: 80px;
+        /* Smaller minimum width */
+    }
+
+    .options-container {
+        gap: 10px;
+        /* Slightly smaller gap for smaller screens */
+    }
+
+    .option-btn.selected {
+        background-color: #bf9d54 !important;
+        /* Highlight color */
+        color: #fff !important;
+        /* Ensure text color changes */
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+}

@@ -10,9 +10,9 @@ const SubscriptionCard = (props) => {
   };
 
   return (
-    <div 
+    <div
       className={`product__item d-flex flex-column justify-content-between ${selectedSubscription === id ? 'selected' : ''}`}
-      onClick={handleSelect} // Make entire card clickable
+      // Make entire card clickable
       style={{ cursor: "pointer" }}
     >
       <div className="product__content">
@@ -21,9 +21,7 @@ const SubscriptionCard = (props) => {
         <p className="product__description">{description}</p>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-between">
-        <button className="addTOCART__btn">
-          Select
-        </button>
+
       </div>
     </div>
   );

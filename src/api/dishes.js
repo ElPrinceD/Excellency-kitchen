@@ -1,14 +1,21 @@
 import axios from "axios";
-import { API_URL } from "../config/api"; // Import the base URL from the config
+import { API_URL } from "./config";
+import { getAuthToken } from "../utils/auth";
 
 // Get all dishes
-export const getDishes = async () => {
+export const getDishes = async (token) => {
     try {
-        const response = await axios.get(`${API_URL}/dishes/`);
-        return response.data; // Return the list of dishes
+        const response = await axios.get(`${API_URL}/api/dishes/`, {
+            headers: {
+                Authorization: `Bearer ${token}`, // Include the JWT token in the header
+            },
+        });
+
+        console.log(response.data)
+        return response.data; // Return the response data
     } catch (error) {
-        console.error("Error fetching dishes:", error);
-        throw error;
+        console.error("Error fetching dishes:", error.response?.data || error.message);
+        throw new Error("Failed to fetch dishes. Please try again.");
     }
 };
 
@@ -24,12 +31,39 @@ export const createDish = async (dishData) => {
 };
 
 // Get a specific dish by ID
-export const getDishById = async (dishId) => {
+export const getDishById = async (id, token) => {
+
     try {
-        const response = await axios.get(`${API_URL}/dishes/${dishId}/`);
-        return response.data; // Return the dish data
+        const response = await axios.get(`${API_URL}/api/dishes/${id}/`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
     } catch (error) {
-        console.error(`Error fetching dish ${dishId}:`, error);
+        console.error("Error fetching reservation by ID:", error);
         throw error;
     }
 };
+
+export const updateReservationDishes = async (reservationId, dishesUpdate) => {
+    const token = getAuthToken();
+
+    try {
+        const response = await axios.patch(
+            `${API_URL}/api/reservations/${reservationId}/`, // The endpoint for updating reservation dishes
+            dishesUpdate,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data; // Assuming the response returns updated reservation data
+    } catch (error) {
+        throw new Error('Error updating reservation dishes');
+    }
+};
+
+
+//Set the first things to show all the elements

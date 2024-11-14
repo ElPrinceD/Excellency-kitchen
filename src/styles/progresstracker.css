@@ -1,0 +1,136 @@
+.stepper-wrapper {
+
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* Allow wrapping when the screen is small */
+    gap: 10px;
+    /* Add space between items */
+}
+
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 100px;
+    /* Limit the width of the stepper items */
+    margin: 0 5px;
+}
+
+.stepper-item::before,
+.stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+}
+
+.stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for active/completed state */
+}
+
+.stepper-item.active {
+    font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+    background-color: #4bb543;
+}
+
+.stepper-item.completed::after {
+    border-bottom: 2px solid #4bb543;
+    z-index: 3;
+}
+
+.stepper-item:first-child::before {
+    content: none;
+}
+
+.stepper-item:last-child::after {
+    content: none;
+}
+
+/* Responsive Design: */
+@media (max-width: 768px) {
+    .stepper-wrapper {
+        justify-content: space-evenly;
+        /* Evenly space items for smaller screens */
+        margin-bottom: 10px;
+        /* Adjust margin for smaller screens */
+    }
+
+    .stepper-item {
+        flex: 1 0 80px;
+        /* Reduce the base width of stepper items for smaller screens */
+        max-width: 80px;
+        /* Further limit width for better responsiveness */
+    }
+
+    .stepper-item .step-counter {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+    }
+
+    .stepper-item .step-name {
+        font-size: 12px;
+        /* Adjust the step name size for better fit */
+        text-align: center;
+        /* Center-align text */
+    }
+
+    /* Optional: reduce the size of the lines between steps */
+    .stepper-item::before,
+    .stepper-item::after {
+        border-bottom: 1px solid #ccc;
+        top: 18px;
+        /* Move lines closer */
+    }
+}
+
+@media (max-width: 480px) {
+    .stepper-wrapper {
+        flex-direction: row;
+        /* Keep items in row layout */
+    }
+
+    .stepper-item {
+        flex: 1 0 50px;
+        /* Reduce the width even more */
+        max-width: 50px;
+        /* Further limit width for tiny screens */
+        margin-bottom: 15px;
+        /* Add space between stacked items */
+    }
+
+    .stepper-item .step-counter {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+        /* Adjust the font size for extra small screens */
+    }
+
+    .stepper-item .step-name {
+        font-size: 10px;
+        /* Further adjust the text size */
+    }
+}

@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
 import { FaUser, FaLock } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Import visibility icons
-import { login } from "../api/auth"; // Import the login function
-import { setAuthToken } from "../utils/auth"; // Utility function to save token
+import { login, clientLogin } from "../api/auth"; // Import the login function
+import { setAuthToken, setReservationID, getReservationID } from "../utils/auth"; // Utility function to save token
 import "../styles/login.css";
 
 const Login = () => {
@@ -20,11 +20,17 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const data = await login(username, password); // Call the login API
-      const { access } = data; // Assuming the response contains the access token
+      const data = await clientLogin(username, password); // Call the login API
+      console.log(data)
+      const { access_token, reservation } = data; // Assuming the response contains the access token
 
-      setAuthToken(access); // Save the token
-      navigate("/book-event"); // Redirect after login
+      setAuthToken(access_token); // Save the token
+
+      setReservationID(reservation[0].reservation_id)
+      console.log('Reservation 1: ', reservation[0].reservation_id)
+      const reservationId = reservation[0].reservation_id
+
+      navigate("/subscription", { state: { reservationId } }); // Redirect after login
     } catch (error) {
       console.error("Login failed:", error);
       if (error.response && error.response.status === 401) {

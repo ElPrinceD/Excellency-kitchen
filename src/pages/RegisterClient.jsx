@@ -70,7 +70,7 @@ const RegisterClientPage = () => {
 
     return (
         <Container>
-            <h2 className="mb-4">Register New Client</h2>
+            <h2 className="mb-4">Register New Client Menu</h2>
 
             {/* Show red alert for validation errors */}
             {validationError && (

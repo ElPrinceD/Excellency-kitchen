@@ -8,23 +8,23 @@
 }
 
 .product__img {
-  width: 60%;
-  /* Adjust the width as needed */
-  height: 60%;
-  /* Adjust the height as needed */
-  border-radius: 60%;
-  /* This makes the image circular */
+  width: 80%;
+  /* Adjust width to create a rectangle */
+  height: 180px;
+  /* Set a fixed height for the rectangular image */
   object-fit: cover;
-  /* This ensures the image covers the area without distortion */
+  /* Ensures the image covers the area without distortion */
   margin-bottom: 20px;
+  /* Space between the image and the text */
   transition: transform 0.4s;
   /* Smooth transition for scaling */
 }
 
-.product__description {
-  font-size: 1.5rem;
-  color: #1e1e1e;
+.product__content h3 {
+  font-size: 1.2rem;
+  color: #333;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 /* CSS to style the custom checkbox */
@@ -73,7 +73,8 @@
 }
 
 .product__img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  /* Slightly scale the image when hovered */
 }
 
 .product__content h5 a {
