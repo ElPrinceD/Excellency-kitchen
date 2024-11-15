@@ -47,8 +47,9 @@
     /* Smooth transition for active/completed state */
 }
 
-.stepper-item.active {
+.stepper-item.active .step-counter {
     font-weight: bold;
+    background-color: yellow;
 }
 
 .stepper-item.completed .step-counter {

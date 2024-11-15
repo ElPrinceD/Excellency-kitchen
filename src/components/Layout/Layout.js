@@ -6,27 +6,19 @@ import Routes from "../../routes/Routers";
 import Carts from "../UI/cart/Carts.jsx";
 import { useSelector } from "react-redux";
 import ProgressTracker from '../../components/UI/progress/ProgressTracker.jsx';
+import { useProgress } from '../../context/ProgressContext.js';
 
 const Layout = () => {
   const location = useLocation();
   const showCart = useSelector((state) => state.cartUi.cartIsVisible);
+  const { currentStep } = useProgress();
 
-  // List of routes where the header and footer should not be shown
   const noHeaderFooterRoutes = ["/login"];
   const shouldShowHeaderFooter = !noHeaderFooterRoutes.includes(location.pathname);
 
-  const getCurrentStep = (pathname) => {
-    if (pathname.includes("/subscription")) return 1;
-    if (pathname.includes("/options")) return 2;
-    if (pathname.includes("/pizzas")) return 3;
-    if (pathname.includes("/summary")) return 4;
-    return 0;
-  };
-
-  // Fixed step names for all pages
   const stepNames = [
     "Welcome",
-    "Meal Package",   // Step 1: Subscription
+    "Meal Package",
     "Cuisine",
     "Spice level",
     "Chutney",
@@ -34,15 +26,12 @@ const Layout = () => {
     "Starters",
     "Rice Dishes",
     "Curries",
-    "Desserts",   // Step 3: Pizzas
+    "Desserts",
     "Extra Note",
-    "Summary"         // Step 4: Summary
+    "Summary"
   ];
+  const totalSteps = stepNames.length;
 
-  const currentStep = getCurrentStep(location.pathname);
-  const totalSteps = 12;
-
-  // Scroll to the top whenever the route changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -54,7 +43,7 @@ const Layout = () => {
         <ProgressTracker
           currentStep={currentStep}
           totalSteps={totalSteps}
-          stepNames={stepNames} // Pass the fixed step names here
+          stepNames={stepNames}
         />
       )}
       {showCart && <Carts />}
@@ -67,5 +56,3 @@ const Layout = () => {
 };
 
 export default Layout;
-
-
