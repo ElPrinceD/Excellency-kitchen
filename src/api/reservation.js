@@ -20,7 +20,25 @@ export const makeReservation = async (reservationData, token) => {
         throw new Error("Reservation failed. Please try again.");
     }
 };
+export const updateReservation = async (reservationId, reservationUpdate) => {
+    const token = getAuthToken();
 
+    try {
+        const response = await axios.patch(
+            `${API_URL}/api/reservations/${reservationId}/`,
+            reservationUpdate,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data; // Assuming the response returns updated reservation data
+    } catch (error) {
+        console.error("Error during PATCH request:", error.response || error);
+        throw new Error('Error updating reservation: ', error);
+    }
+};
 
 export const getReservations = async (token) => {
     try {

@@ -34,14 +34,15 @@ const subscriptionOptions = [
 ];
 
 const Subscription = () => {
-  const { state } = useLocation();
+  const { state, client_name } = useLocation();
   const location = useLocation();
   const token = getAuthToken();
   const { reservationId } = location.state || {};
-  console.log("Subscription Page", reservationId)
+  console.log(reservationId)
   const userName = state?.userName || "Guest"; // Get the user's name from state or default to 'Guest'
   const [selectedSubscription, setSelectedSubscription] = useState(null);
   const [reservationDetails, setReservationDetails] = useState(null);
+  console.log("Subscription Page", reservationDetails)
   const navigate = useNavigate();
 
   // Fetch reservation details using reservationId
@@ -50,7 +51,7 @@ const Subscription = () => {
       try {
         // Assuming fetchReservationById is a function that fetches reservation details
         const reservation = await getReservationById(reservationId, token);
-        console.log(reservation)
+
         setReservationDetails(reservation);
 
         // If reservation has subscription info, set the selected subscription
@@ -93,7 +94,7 @@ const Subscription = () => {
   return (
     <Helmet title="Subscription Options">
       <Container>
-        <h2 className="text-center mb-4">{userName}, Please Select Your Preferred Meal Subscription</h2>
+        <h2 className="text-center mb-4">{reservationDetails.client_name}, Please Select Your Preferred Meal Subscription</h2>
         <Row>
           {subscriptionOptions.map((option) => (
             <Col

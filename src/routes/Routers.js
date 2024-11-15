@@ -17,6 +17,9 @@ import IngredientCalculator from "../pages/IngredientsCalculator";
 import KitchenManager from "../pages/KitchenManager";
 import ReservationDetailsPage from "../pages/ReservationDetailsPage";
 import SelectOptions from "../pages/SelectOptions";
+import DishesNote from "../pages/DishesNote";
+import ConfirmationPage from "../pages/Confirmation";
+import AdminLogin from "../pages/AdminLogin";
 
 const Routers = () => {
   return (
@@ -28,14 +31,17 @@ const Routers = () => {
       <Route path='/subscription' element={<Subscription />} />
       <Route path='/welcome' element={<WelcomePage />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/confirmation" element={<ConfirmationPage />} />
       <Route path="/kitchen-manager" element={<KitchenManager />} />
       <Route path="/pizzas" element={<Pizzas />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/register" element={<RegisterClientPage />} />
       <Route path="/options" element={<SelectOptions />} />
+      <Route path="/notes" element={<DishesNote />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path='/summary' element={<SummaryPage />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/admin-login" element={<AdminLogin />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/book-event" element={<EventForm />} />
       <Route path="/pizzas/:id" element={<PizzaDetails />} />

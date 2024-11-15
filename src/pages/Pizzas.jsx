@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDishes, updateReservationDishes } from "../api/dishes";
+import { getDishes } from "../api/dishes"; // Fetch dishes without updating reservation
 import SelectableProductCard from "../components/UI/product-card/SelectableProductCard";
 import salads from "../assets/images/WAQA5665.JPG";
 import starters from "../assets/images/WAQA5525.JPG";
@@ -13,7 +13,6 @@ import "../styles/pizzas.css";
 import { getAuthToken } from "../utils/auth";
 import { useProgress } from "../context/ProgressContext";
 
-
 const categories = ["Salads", "Starters", "Rice Dishes", "Curries", "Desserts"];
 const categoryImages = {
   Salads: salads,
@@ -23,15 +22,18 @@ const categoryImages = {
   Desserts: dessert,
 };
 
-// Dummy data to simulate API response
-
-
-const baseStepIndex = 6;
+const baseStepIndex = 5;
 
 const Pizzas = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { limits, reservationId } = location.state || {};
+  const {
+    reservationId,
+    limits,
+    selectedCuisine,
+    selectedSpiceLevel,
+    selectedChutneys,
+  } = location.state || {};
   const token = getAuthToken();
   const { setCurrentStep } = useProgress();
 
@@ -83,23 +85,20 @@ const Pizzas = () => {
     }
   };
 
-  const handleContinue = async () => {
+  const handleContinue = () => {
     if (categoryIndex < categories.length - 1) {
       setCategoryIndex(categoryIndex + 1);
     } else {
-      const selectedMeals = Object.values(selectedItems).flat();
-      const dishIds = selectedMeals.map((meal) => meal.id);
-
-      const dishesUpdate = {
-        dishes: dishIds,
-      };
-
-      try {
-        await updateReservationDishes(reservationId, dishesUpdate);
-        navigate("/summary", { state: { selectedItems } });
-      } catch (error) {
-        console.error("Error updating reservation dishes:", error);
-      }
+      navigate("/notes", {
+        state: {
+          reservationId,
+          limits,
+          selectedCuisine,
+          selectedSpiceLevel,
+          selectedChutneys,
+          selectedItems,
+        },
+      });
     }
   };
 
@@ -160,9 +159,8 @@ const Pizzas = () => {
               <Button
                 onClick={handleContinue}
                 disabled={remainingCount > 0}
-                className={''}
               >
-                {categoryIndex < categories.length - 1 ? "Next Page" : "Go to Summary"}
+                {categoryIndex < categories.length - 1 ? "Next Page" : "Next Page"}
               </Button>
             </div>
           </>

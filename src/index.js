@@ -8,15 +8,18 @@ import "./index.css";
 
 import store from "./store/store";
 import { Provider } from "react-redux";
+import { ProgressProvider } from './context/ProgressContext';
 
 import { HashRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <ProgressProvider>
       <Provider store={store}>
         <App />
-      </Provider>
+        </Provider>
+        </ProgressProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

@@ -8,7 +8,7 @@ const WelcomePage = () => {
 
     const handleContinue = () => {
         // Navigate to the book event page after the welcome message
-        navigate("/book-event");
+        navigate("/login");
     };
 
     return (
@@ -17,7 +17,7 @@ const WelcomePage = () => {
                 <Row className="justify-content-center">
                     <Col lg="8" md="10">
                         <div className="welcome-container">
-                            <h2 className="welcome-title">Ali Jordan, Welcome to Excellency Midlands</h2>
+                            <h2 className="welcome-title">Welcome to Excellency Midlands</h2>
                             <p className="welcome-text">
                                 Congratulations on your upcoming celebration. We are honored to be part of your special day.
                             </p>

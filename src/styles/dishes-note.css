@@ -1,0 +1,30 @@
+.notes-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.notes-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+}
+
+.notes-textarea {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    font-size: 16px;
+    resize: none;
+    background-color: #f9f9f9;
+}
+
+.notes-textarea:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
