@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Excellency-kitchen/static/css/main.e7b64c67.css",
-    "main.js": "/Excellency-kitchen/static/js/main.73989918.js",
+    "main.css": "/Excellency-kitchen/static/css/main.90c070d1.css",
+    "main.js": "/Excellency-kitchen/static/js/main.66d7d840.js",
     "static/media/WAQA5590.JPG": "/Excellency-kitchen/static/media/WAQA5590.2d3b31ebf1859d4553f5.JPG",
     "static/media/WAQA5557.JPG": "/Excellency-kitchen/static/media/WAQA5557.f4e6ac1b137ed8cdfeb7.JPG",
     "static/media/WAQA5525.JPG": "/Excellency-kitchen/static/media/WAQA5525.1e733aba6fb8ee447616.JPG",
@@ -15,11 +15,11 @@
     "static/media/Excellency_0007_catering-img-1.webp": "/Excellency-kitchen/static/media/Excellency_0007_catering-img-1.9b85c3e4dd0f7666b420.webp",
     "static/media/remixicon.woff2?t=1590207869815": "/Excellency-kitchen/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
     "index.html": "/Excellency-kitchen/index.html",
-    "main.e7b64c67.css.map": "/Excellency-kitchen/static/css/main.e7b64c67.css.map",
-    "main.73989918.js.map": "/Excellency-kitchen/static/js/main.73989918.js.map"
+    "main.90c070d1.css.map": "/Excellency-kitchen/static/css/main.90c070d1.css.map",
+    "main.66d7d840.js.map": "/Excellency-kitchen/static/js/main.66d7d840.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7b64c67.css",
-    "static/js/main.73989918.js"
+    "static/css/main.90c070d1.css",
+    "static/js/main.66d7d840.js"
   ]
 }
