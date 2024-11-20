@@ -6,9 +6,19 @@ export const setReservationID = (reservationID) => {
     localStorage.setItem("reservationID", reservationID); // Store the token in localStorage
 };
 
+export const setDate = (date) => {
+    localStorage.setItem("loginDate", date);
+}
+
+export const getDate = () => {
+    localStorage.getItem("loginDate");
+}
+
 export const getReservationID = () => {
     localStorage.getItem("reservationID"); // Store the token in localStorage
 };
+
+
 
 
 export const getAuthToken = () => {

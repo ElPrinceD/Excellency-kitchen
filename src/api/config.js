@@ -1,2 +1,2 @@
 // Configuration file for the base URL
-export const API_URL = "http://192.168.110.144:8000"; // Replace with your backend URL
+export const API_URL = "https://acf3-176-35-152-206.ngrok-free.app"; // Replace with your backend URL

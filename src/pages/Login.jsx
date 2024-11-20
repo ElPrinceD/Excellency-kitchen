@@ -39,12 +39,14 @@ const Login = () => {
       const { access_token, reservation, client_name } = data; // Assuming the response contains the access token
 
       setAuthToken(access_token); // Save the token
+      console.log("Trials: ", reservation[0].date)
 
+      const date = reservation[0].date
       setReservationID(reservation[0].reservation_id);
       console.log("Reservation 1: ", client_name);
       const reservationId = reservation[0].reservation_id;
 
-      navigate("/subscription", { state: { reservationId, client_name } }); // Redirect after login
+      navigate("/subscription", { state: { reservationId, client_name, date } }); // Redirect after login
     } catch (error) {
       console.error("Login failed:", error);
       if (error.response && error.response.status === 401) {

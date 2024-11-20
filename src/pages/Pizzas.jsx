@@ -22,6 +22,11 @@ const categoryImages = {
   Desserts: dessert,
 };
 
+const displayCategoryTitles = {
+  "Rice Dishes": "Rice Dishes (Main Course)",
+  Curries: "Curries (Main Course)",
+};
+
 const baseStepIndex = 5;
 
 const Pizzas = () => {
@@ -124,7 +129,7 @@ const Pizzas = () => {
           <p>Loading products...</p>
         ) : (
           <>
-            <h3 className="category-title mb-4">{currentCategory}</h3>
+            <h3 className="category-title mb-4">{displayCategoryTitles[currentCategory] || currentCategory}</h3>
             <p>
               Choose up to {limit} item(s) from {currentCategory}
             </p>
@@ -152,7 +157,7 @@ const Pizzas = () => {
 
             {remainingCount > 0 && (
               <div className="d-flex justify-content-center mb-4">
-                <span style={{ color: "red", fontSize: "16px" }}>
+                <span style={{ color: "red", fontSize: "24px", fontWeight: "bolder" }}>
                   You need to select {remainingCount} more item
                   {remainingCount > 1 ? "s" : ""} before continuing.
                 </span>
@@ -165,6 +170,10 @@ const Pizzas = () => {
                 disabled={remainingCount > 0}
                 style={{
                   backgroundColor: remainingCount > 0 ? 'gray' : 'green',
+                  paddingRight: 50,
+                  paddingLeft: 50,
+                  paddingTop: 20,
+                  paddingBottom: 20,
                   borderColor: remainingCount > 0 ? 'gray' : 'green',
                   color: 'white', // Ensure the text is readable
                 }}

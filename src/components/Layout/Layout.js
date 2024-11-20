@@ -14,7 +14,7 @@ const Layout = () => {
   const { currentStep } = useProgress();
 
   // Define the routes where the header and progress bar should be hidden
-  const noProgressBarRoutes = ["/login", "/welcome", "/confirmation", '/admin-login', '/admin', "/reservations/:id", "/register"];
+  const noProgressBarRoutes = ["/login", "/welcome", "/confirmation", '/admin-login', '/admin', "/reservations/:id", "/register", "/chefs"];
   const shouldShowHeaderFooter = location.pathname !== "/login"; // Header should be shown on all except login
 
   // Don't show progress bar on login and welcome routes

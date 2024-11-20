@@ -22,6 +22,7 @@ const chutneys = [
   "Mint Sauce",
   "Punjabi",
   "Chilli Sauce",
+  "Plumb"
 ];
 
 const SelectOptions = () => {
@@ -143,6 +144,12 @@ const SelectOptions = () => {
         <div className="d-flex justify-content-end mt-4">
           <Button
             onClick={handleContinue}
+            style={{
+              paddingRight: 50,
+              paddingLeft: 50,
+              paddingTop: 20,
+              paddingBottom: 20,
+            }}
             disabled={
               (step === 2 && !selectedCuisine) ||
               (step === 3 && !selectedSpiceLevel) ||

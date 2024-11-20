@@ -1,20 +1,40 @@
-/* src/styles/chefs.css */
-.chef__item {
-    border: 1px solid #fde4e4;
-    padding: 20px;
-    border-radius: 8px;
-    transition: 0.3s;
-  }
-  
-  .chef__img {
-    width: 100%; /* Set to fill the width of the column */
-    height: 150%; /* Set a fixed height to make it rectangular */
-    object-fit: cover; /* Ensure the image covers the area without stretching */
-    border-radius: 8px; /* Optional: Add some rounding to the corners */
-    margin-bottom: 20px;
-  }
-  
-  .chef__item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+.chefs-hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  /* Adjust as needed for desired height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chefs-hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Add a dark overlay for better text visibility */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.chefs-hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.chefs-hero-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.chefs-details {
+  color: #333;
+  /* Ensure readability for the text */
+}
+
+.chefs-details p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
