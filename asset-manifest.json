@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Excellency-kitchen/static/css/main.a5fbbf68.css",
-    "main.js": "/Excellency-kitchen/static/js/main.e328f354.js",
+    "main.js": "/Excellency-kitchen/static/js/main.56678de1.js",
     "static/media/WAQA5590.JPG": "/Excellency-kitchen/static/media/WAQA5590.2d3b31ebf1859d4553f5.JPG",
     "static/media/WAQA5557.JPG": "/Excellency-kitchen/static/media/WAQA5557.f4e6ac1b137ed8cdfeb7.JPG",
     "static/media/WAQA5525.JPG": "/Excellency-kitchen/static/media/WAQA5525.1e733aba6fb8ee447616.JPG",
@@ -17,10 +17,10 @@
     "static/media/remixicon.woff2?t=1590207869815": "/Excellency-kitchen/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
     "index.html": "/Excellency-kitchen/index.html",
     "main.a5fbbf68.css.map": "/Excellency-kitchen/static/css/main.a5fbbf68.css.map",
-    "main.e328f354.js.map": "/Excellency-kitchen/static/js/main.e328f354.js.map"
+    "main.56678de1.js.map": "/Excellency-kitchen/static/js/main.56678de1.js.map"
   },
   "entrypoints": [
     "static/css/main.a5fbbf68.css",
-    "static/js/main.e328f354.js"
+    "static/js/main.56678de1.js"
   ]
 }
