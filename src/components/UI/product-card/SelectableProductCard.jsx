@@ -22,7 +22,7 @@ const SelectableProductCard = ({ item, onSelect, isSelected }) => {
       </div>
 
       {/* Button or small box to toggle ingredients */}
-      <div className="ingredients-toggle d-flex justify-content-center mt-2">
+      {/* <div className="ingredients-toggle d-flex justify-content-center mt-2">
         <button
           className="btn btn-info"
           style={{
@@ -37,7 +37,7 @@ const SelectableProductCard = ({ item, onSelect, isSelected }) => {
         >
           {showIngredients ? "Hide Ingredients" : "Show Ingredients"}
         </button>
-      </div>
+      </div> */}
 
       {/* Show ingredients when toggle is clicked */}
       {showIngredients && (

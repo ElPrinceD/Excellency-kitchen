@@ -1,13 +1,11 @@
 .stepper-wrapper {
-
-    margin-top: auto;
+    margin-top: calc(var(--header-height, 30px));
+    /* Adjust or replace with the actual header height */
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     flex-wrap: wrap;
-    /* Allow wrapping when the screen is small */
-    gap: 10px;
-    /* Add space between items */
+    gap: 1px;
 }
 
 .stepper-item {
@@ -47,9 +45,8 @@
     /* Smooth transition for active/completed state */
 }
 
-.stepper-item.active .step-counter {
+.stepper-item.active {
     font-weight: bold;
-    background-color: yellow;
 }
 
 .stepper-item.completed .step-counter {
@@ -73,6 +70,7 @@
 @media (max-width: 768px) {
     .stepper-wrapper {
         justify-content: space-evenly;
+        margin-top: calc(var(--mobile-header-height, 30px));
         /* Evenly space items for smaller screens */
         margin-bottom: 10px;
         /* Adjust margin for smaller screens */
@@ -85,34 +83,34 @@
         /* Further limit width for better responsiveness */
     }
 
+
+
+
+
+    .stepper-item::before,
+    .stepper-item::after {
+        width: 70%;
+        /* Adjust for smaller steps */
+        top: 18px;
+        /* Align line closer to the step */
+    }
+
     .stepper-item .step-counter {
         width: 30px;
         height: 30px;
         font-size: 14px;
-        /* Adjust font size for smaller screens */
     }
 
     .stepper-item .step-name {
         font-size: 12px;
-        /* Adjust the step name size for better fit */
         text-align: center;
-        /* Center-align text */
-    }
-
-    .stepper-item::before,
-    .stepper-item::after {
-        border-bottom: 2px solid #ccc;
-        /* Keep consistent line width */
-        top: 18px;
-        /* Move lines closer */
-        width: calc(50% - 15px);
-        /* Adjust width for alignment */
     }
 }
 
 @media (max-width: 480px) {
     .stepper-wrapper {
         flex-direction: row;
+        margin-top: calc(var(--mobile-header-height, 30px));
         /* Keep items in row layout */
     }
 
@@ -125,25 +123,26 @@
         /* Add space between stacked items */
     }
 
+
+
+
+
+
+    .stepper-item::before,
+    .stepper-item::after {
+        width: 100%;
+        /* Ensure lines extend to half the next step */
+        top: 16px;
+        /* Fine-tune alignment */
+    }
+
     .stepper-item .step-counter {
         width: 25px;
         height: 25px;
         font-size: 12px;
-        /* Adjust the font size for extra small screens */
     }
 
     .stepper-item .step-name {
         font-size: 10px;
-        /* Further adjust the text size */
-    }
-
-    .stepper-item::before,
-    .stepper-item::after {
-        top: 16px;
-        /* Fine-tune line position */
-        border-bottom: 1px solid #ccc;
-        /* Thinner lines for extra small screens */
-        width: calc(50% - 10px);
-        /* Adjust width for perfect centering */
     }
 }

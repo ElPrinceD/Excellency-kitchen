@@ -7,6 +7,7 @@ export const getDishes = async (token) => {
     try {
         const response = await axios.get(`${API_URL}/api/dishes/`, {
             headers: {
+                "ngrok-skip-browser-warning": "69420",
                 Authorization: `Bearer ${token}`, // Include the JWT token in the header
             },
         });
@@ -36,12 +37,29 @@ export const getDishById = async (id, token) => {
     try {
         const response = await axios.get(`${API_URL}/api/dishes/${id}/`, {
             headers: {
+                "ngrok-skip-browser-warning": "69420",
                 Authorization: `Bearer ${token}`,
             },
         });
         return response.data;
     } catch (error) {
-        console.error("Error fetching reservation by ID:", error);
+        console.error("Error fetching dish by ID:", error);
+        throw error;
+    }
+};
+
+export const getIngredientById = async (id, token) => {
+
+    try {
+        const response = await axios.get(`${API_URL}/api/ingredients/${id}/`, {
+            headers: {
+                "ngrok-skip-browser-warning": "69420",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching ingredient by ID:", error);
         throw error;
     }
 };
@@ -51,10 +69,11 @@ export const updateReservationDishes = async (reservationId, dishesUpdate) => {
 
     try {
         const response = await axios.patch(
-            `${API_URL}/api/reservations/${reservationId}/`, // The endpoint for updating reservation dishes
+            `${API_URL}/api/reservations/${reservationId}/`,
             dishesUpdate,
             {
                 headers: {
+                    "ngrok-skip-browser-warning": "69420",
                     Authorization: `Bearer ${token}`,
                 },
             }

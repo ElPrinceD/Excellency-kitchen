@@ -6,6 +6,9 @@ export const login = async (username, password) => {
     try {
 
         const response = await axios.post(`${API_URL}/login/`, { username, password });
+
+
+        console.log("Login Response: ", response.data)
         return response.data; // Return the authentication token or user data
     } catch (error) {
         console.error("Error logging in:", error);
@@ -18,6 +21,8 @@ export const clientLogin = async (username, password) => {
     try {
         // Send login request to the backend
         const response = await axios.post(`${API_URL}/client-login/`, { username, password });
+
+        console.log("Actual Response: ", response.data.client_name)
 
         // Check if login is successful
         if (response.data.access_token) {
@@ -34,6 +39,7 @@ export const clientLogin = async (username, password) => {
             return {
                 access_token: response.data.access_token,
                 refresh_token: response.data.refresh_token,
+                client_name: response.data.client_name,
                 reservation: reservation
             };
         } else {

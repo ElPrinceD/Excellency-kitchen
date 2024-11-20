@@ -144,13 +144,13 @@ const SelectOptions = () => {
           <Button
             onClick={handleContinue}
             disabled={
-              (step === 3 && !selectedCuisine) ||
-              (step === 4 && !selectedSpiceLevel) ||
-              (step === 5 && selectedChutneys.length === 0)
+              (step === 2 && !selectedCuisine) ||
+              (step === 3 && !selectedSpiceLevel) ||
+              (step === 4 && selectedChutneys.length === 0)
             }
-            className={`next-page-btn ${(step === 3 && selectedCuisine) ||
-              (step === 4 && selectedSpiceLevel) ||
-              (step === 5 && selectedChutneys.length > 0)
+            className={`next-page-btn ${(step === 2 && selectedCuisine) ||
+              (step === 3 && selectedSpiceLevel) ||
+              (step === 4 && selectedChutneys.length > 0)
               ? "enabled"
               : ""
               }`}

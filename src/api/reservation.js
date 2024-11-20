@@ -9,6 +9,7 @@ export const makeReservation = async (reservationData, token) => {
     try {
         const response = await axios.post(`${API_URL}/api/reservations/`, reservationData, {
             headers: {
+                "ngrok-skip-browser-warning": "69420",
                 Authorization: `Bearer ${token}`, // Include the JWT token in the header
                 "Content-Type": "application/json",
             },
@@ -29,7 +30,9 @@ export const updateReservation = async (reservationId, reservationUpdate) => {
             reservationUpdate,
             {
                 headers: {
+                    "ngrok-skip-browser-warning": "69420",
                     Authorization: `Bearer ${token}`,
+
                 },
             }
         );
@@ -44,6 +47,8 @@ export const getReservations = async (token) => {
     try {
         const response = await axios.get(`${API_URL}/api/reservations/`, {
             headers: {
+
+                "ngrok-skip-browser-warning": "69420",
                 Authorization: `Bearer ${token}`, // Include the JWT token in the header
             },
         });
@@ -64,6 +69,7 @@ export const updateReservationStatus = async (reservationId, status, token) => {
             { status }, // Update the `is_confirmed` field based on status
             {
                 headers: {
+                    "ngrok-skip-browser-warning": "69420",
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
@@ -82,6 +88,7 @@ export const getReservationById = async (id, token) => {
     try {
         const response = await axios.get(`${API_URL}/api/reservations/${id}/`, {
             headers: {
+                "ngrok-skip-browser-warning": "69420",
                 Authorization: `Bearer ${token}`,
             },
         });

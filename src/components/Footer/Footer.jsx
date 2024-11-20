@@ -10,8 +10,8 @@ const Footer = () => {
       <div className="footer__logo">
         <img src={logo} alt="logo" />
         <h5>Excellency Midlands</h5>
-        <p>Events at Excellency are not just any wedding. 
-         </p>
+        <p>Weddings at Excellency are not just any wedding.
+        </p>
       </div>
       <div>
         <h5 className="footer__title mb-3">Contact Us</h5>

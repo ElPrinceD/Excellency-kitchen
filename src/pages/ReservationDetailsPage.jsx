@@ -11,16 +11,22 @@ const ReservationDetailsPage = () => {
     const [dishData, setDishData] = useState([]);
     const token = getAuthToken();
 
-    console.log(dishData)
+
+
 
     useEffect(() => {
         const fetchReservation = async () => {
             try {
                 const data = await getReservationById(id, token);
+
                 const dishDetailsPromises = data.dishes.map(dishId => getDishById(dishId, token));
                 const dishDetails = await Promise.all(dishDetailsPromises);
+
+
+
                 setDishData(dishDetails); // Set the actual dish data here
                 setReservation(data);
+
             } catch (error) {
                 console.error("Error fetching reservation:", error);
             }
@@ -106,6 +112,40 @@ const ReservationDetailsPage = () => {
                             </FormGroup>
                         </Col>
                     </Row>
+
+                    <Row className="mb-3">
+                        <Col>
+                            <FormGroup>
+                                <Label for="hall"><strong>Cuisine:</strong></Label>
+                                <Input type="text" id="hall" value={reservation.cuisine} readOnly />
+                            </FormGroup>
+                        </Col>
+                        <Col>
+                            <FormGroup>
+                                <Label for="hall"><strong>Chutneys:</strong></Label>
+                                <Input type="text" id="hall" value={reservation.chutneys} readOnly />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row className="mb-3">
+                        <Col>
+                            <FormGroup>
+                                <Label for="hall"><strong>Spice Levels:</strong></Label>
+                                <Input type="text" id="hall" value={reservation.spice_level} readOnly />
+                            </FormGroup>
+                        </Col>
+
+                    </Row>
+                    <Row className="mb-3">
+                        <Col>
+                            <FormGroup>
+                                <Label for="hall"><strong>Extra Notes:</strong></Label>
+                                <Input type="text" id="hall" value={reservation.additional_notes} readOnly />
+                            </FormGroup>
+                        </Col>
+
+                    </Row>
+
                     {/* Print Button */}
                     <Row className="mt-4">
                         <Col className="text-center">

@@ -16,14 +16,14 @@ const nav__links = [
     display: "Chefs",
     path: "/chefs",
   },
-  {
-    display: "Contact",
-    path: "/contact",
-  },
-  {
-    display: "Reservations",
-    path: "/admin", // Admin's reservations page
-  },
+  // {
+  //   display: "Contact",
+  //   path: "/contact",
+  // },
+  // {
+  //   display: "Reservations",
+  //   path: "/admin", // Admin's reservations page
+  // },
 
 ];
 

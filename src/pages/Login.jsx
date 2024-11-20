@@ -35,7 +35,7 @@ const Login = () => {
 
     try {
       const data = await clientLogin(username, password); // Call the login API
-      console.log(data);
+      console.log("data: ", data);
       const { access_token, reservation, client_name } = data; // Assuming the response contains the access token
 
       setAuthToken(access_token); // Save the token

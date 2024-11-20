@@ -48,7 +48,11 @@ const Pizzas = () => {
     const fetchProducts = async () => {
       try {
         const productData = await getDishes(token);
+
+
         setProducts(productData);
+
+        console.log("Dishes: ", products)
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -159,6 +163,11 @@ const Pizzas = () => {
               <Button
                 onClick={handleContinue}
                 disabled={remainingCount > 0}
+                style={{
+                  backgroundColor: remainingCount > 0 ? 'gray' : 'green',
+                  borderColor: remainingCount > 0 ? 'gray' : 'green',
+                  color: 'white', // Ensure the text is readable
+                }}
               >
                 {categoryIndex < categories.length - 1 ? "Next Page" : "Next Page"}
               </Button>

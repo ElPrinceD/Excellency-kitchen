@@ -35,13 +35,13 @@ const AdminLogin = () => {
         try {
             const data = await login(username, password); // Call the admin login API
             console.log(data);
-            const { access_token, admin_id, admin_name } = data; // Assuming the response contains the access token
+            const { access, admin_id, admin_name } = data; // Assuming the response contains the access token
 
-            setAuthToken(access_token); // Save the token
+            setAuthToken(access); // Save the token
 
             console.log("Admin: ", admin_name);
 
-            navigate("/admin-dashboard", { state: { admin_name } }); // Redirect to the admin dashboard
+            navigate("/admin", { state: { admin_name } }); // Redirect to the admin dashboard
         } catch (error) {
             console.error("Login failed:", error);
             if (error.response && error.response.status === 401) {
