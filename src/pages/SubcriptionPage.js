@@ -48,6 +48,7 @@ const Subscription = () => {
   // Fetch reservation details using reservationId
   useEffect(() => {
     const fetchReservationDetails = async () => {
+      console.log("Reserve ", reservationId)
       try {
         // Assuming fetchReservationById is a function that fetches reservation details
         const reservation = await getReservationById(reservationId, token);
