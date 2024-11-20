@@ -18,6 +18,7 @@ import {
   setAuthToken,
   setReservationID,
   getReservationID,
+  setDate
 } from "../utils/auth"; // Utility function to save token
 import "../styles/login.css";
 
@@ -39,9 +40,11 @@ const Login = () => {
       const { access_token, reservation, client_name } = data; // Assuming the response contains the access token
 
       setAuthToken(access_token); // Save the token
-      console.log("Trials: ", reservation[0].date)
+
 
       const date = reservation[0].date
+      console.log("Trials: ", date)
+      setDate(date);
       setReservationID(reservation[0].reservation_id);
       console.log("Reservation 1: ", client_name);
       const reservationId = reservation[0].reservation_id;
