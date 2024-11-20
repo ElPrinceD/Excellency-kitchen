@@ -58,20 +58,14 @@ const ReservationDetailsPage = () => {
             <Card className="shadow-sm">
                 <CardBody>
                     <h2 className="text-center mb-4">Menu Details</h2>
-                    <Row className="mb-3">
-                        <Col>
-                            <FormGroup>
-                                <Label for="clientName"><strong>Client Name:</strong></Label>
-                                <Input type="text" id="clientName" value={reservation.client_name} readOnly />
-                            </FormGroup>
-                        </Col>
-                        <Col>
-                            <FormGroup>
-                                <Label for="numberOfPeople"><strong>Number of People:</strong></Label>
-                                <Input type="number" id="numberOfPeople" value={reservation.number_of_people} readOnly />
-                            </FormGroup>
-                        </Col>
-                    </Row>
+                    <div className="d-flex justify-content-center mb-4">
+                        <h5 className="mx-3">{new Date(reservation.date).toLocaleDateString()}</h5>
+                        <h5 className="mx-3">{reservation.time}</h5>
+                        <h5 className="mx-3">{reservation.number_of_people} guests</h5>
+                    </div>
+
+
+
                     <Row className="mb-3">
                         <Col>
                             <FormGroup>
@@ -79,41 +73,12 @@ const ReservationDetailsPage = () => {
                                 <Input type="text" id="hall" value={reservation.hall} readOnly />
                             </FormGroup>
                         </Col>
-                    </Row>
-                    <Row className="mb-3">
                         <Col>
                             <FormGroup>
-                                <Label for="date"><strong>Date:</strong></Label>
-                                <Input type="text" id="date" value={new Date(reservation.date).toLocaleDateString()} readOnly />
+                                <Label for="clientName"><strong>Client Name:</strong></Label>
+                                <Input type="text" id="clientName" value={reservation.client_name} readOnly />
                             </FormGroup>
                         </Col>
-                        <Col>
-                            <FormGroup>
-                                <Label for="time"><strong>Time:</strong></Label>
-                                <Input type="text" id="time" value={reservation.time} readOnly />
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row className="mb-3">
-                        <Col>
-                            <FormGroup>
-                                <Label for="dishes"><strong>Dishes:</strong></Label>
-                                {Object.keys(groupedDishes).map((category) => (
-                                    <FormGroup key={category}>
-                                        <Label for={`category-${category}`}><strong>{category}:</strong></Label>
-                                        <Input
-                                            type="text"
-                                            id={`category-${category}`}
-                                            value={groupedDishes[category].join(", ")}
-                                            readOnly
-                                        />
-                                    </FormGroup>
-                                ))}
-                            </FormGroup>
-                        </Col>
-                    </Row>
-
-                    <Row className="mb-3">
                         <Col>
                             <FormGroup>
                                 <Label for="hall"><strong>Cuisine:</strong></Label>
@@ -127,6 +92,10 @@ const ReservationDetailsPage = () => {
                             </FormGroup>
                         </Col>
                     </Row>
+
+                    <Row className="mb-3">
+
+                    </Row>
                     <Row className="mb-3">
                         <Col>
                             <FormGroup>
@@ -136,6 +105,29 @@ const ReservationDetailsPage = () => {
                         </Col>
 
                     </Row>
+
+                    <Row className="mb-3">
+                        <Col>
+                            <FormGroup>
+                                <Label for="dishes"><strong>Dishes:</strong></Label>
+                                {Object.keys(groupedDishes).map((category) => (
+                                    <FormGroup key={category}>
+                                        <Label for={`category-${category}`}><strong>{category}:</strong></Label>
+                                        <Input
+                                            type="text"
+                                            id={`category-${category}`}
+                                            value={groupedDishes[category].join(", ")}
+                                            style={{ fontWeight: 'bold' }}
+                                            readOnly
+                                        />
+                                    </FormGroup>
+                                ))}
+                            </FormGroup>
+                        </Col>
+                    </Row>
+
+
+
                     <Row className="mb-3">
                         <Col>
                             <FormGroup>

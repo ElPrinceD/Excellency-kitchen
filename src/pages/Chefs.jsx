@@ -6,10 +6,9 @@ import chefsBackground from "../assets/images/WAQA5677.JPG"; // Replace with you
 import "../styles/chefs.css";
 
 const Chefs = () => {
-  const event_date = getDate();
+  // const event_date = getDate();
 
 
-  console.log("Date: ", event_date)
 
 
   return (
