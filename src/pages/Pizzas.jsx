@@ -8,6 +8,7 @@ import starters from "../assets/images/WAQA5525.JPG";
 import curries from "../assets/images/WAQA5590.JPG";
 import rice from "../assets/images/WAQA5557.JPG";
 import dessert from "../assets/images/WAQA5515.JPG";
+
 import Helmet from "../components/Helmet/Helmet";
 import "../styles/pizzas.css";
 import { getAuthToken } from "../utils/auth";
