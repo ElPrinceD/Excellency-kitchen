@@ -1,12 +1,13 @@
 {
   "files": {
-    "main.css": "/Excellency-kitchen/static/css/main.f68978cc.css",
-    "main.js": "/Excellency-kitchen/static/js/main.ea80161b.js",
+    "main.css": "/Excellency-kitchen/static/css/main.a5fbbf68.css",
+    "main.js": "/Excellency-kitchen/static/js/main.ccd3dce2.js",
     "static/media/WAQA5590.JPG": "/Excellency-kitchen/static/media/WAQA5590.2d3b31ebf1859d4553f5.JPG",
     "static/media/WAQA5557.JPG": "/Excellency-kitchen/static/media/WAQA5557.f4e6ac1b137ed8cdfeb7.JPG",
     "static/media/WAQA5525.JPG": "/Excellency-kitchen/static/media/WAQA5525.1e733aba6fb8ee447616.JPG",
     "static/media/WAQA5515.JPG": "/Excellency-kitchen/static/media/WAQA5515.ffe86acf3d483f23ad15.JPG",
     "static/media/WAQA5665.JPG": "/Excellency-kitchen/static/media/WAQA5665.059e637db48a7cfc2293.JPG",
+    "static/media/WAQA5677.JPG": "/Excellency-kitchen/static/media/WAQA5677.286a935632bb997e2bd8.JPG",
     "static/media/remixicon.svg?t=1590207869815": "/Excellency-kitchen/static/media/remixicon.9cedd2150922ead84869.svg",
     "static/media/remixicon.eot?t=1590207869815": "/Excellency-kitchen/static/media/remixicon.5cb99e6cba5a4619063f.eot",
     "static/media/remixicon.ttf?t=1590207869815": "/Excellency-kitchen/static/media/remixicon.f2616f597cf98f38d234.ttf",
@@ -15,11 +16,11 @@
     "static/media/Excellency_0007_catering-img-1.webp": "/Excellency-kitchen/static/media/Excellency_0007_catering-img-1.9b85c3e4dd0f7666b420.webp",
     "static/media/remixicon.woff2?t=1590207869815": "/Excellency-kitchen/static/media/remixicon.90668f6f9b3c2c18a090.woff2",
     "index.html": "/Excellency-kitchen/index.html",
-    "main.f68978cc.css.map": "/Excellency-kitchen/static/css/main.f68978cc.css.map",
-    "main.ea80161b.js.map": "/Excellency-kitchen/static/js/main.ea80161b.js.map"
+    "main.a5fbbf68.css.map": "/Excellency-kitchen/static/css/main.a5fbbf68.css.map",
+    "main.ccd3dce2.js.map": "/Excellency-kitchen/static/js/main.ccd3dce2.js.map"
   },
   "entrypoints": [
-    "static/css/main.f68978cc.css",
-    "static/js/main.ea80161b.js"
+    "static/css/main.a5fbbf68.css",
+    "static/js/main.ccd3dce2.js"
   ]
 }
