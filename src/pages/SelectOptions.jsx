@@ -22,7 +22,7 @@ const chutneys = [
   "Mint Sauce",
   "Punjabi",
   "Chilli Sauce",
-  "Plumb"
+  "Plumb",
 ];
 
 const SelectOptions = () => {
@@ -68,55 +68,67 @@ const SelectOptions = () => {
       });
     }
   };
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetElement = document.querySelector(hash);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [location.hash]);
 
   // Conditional rendering for each selection step
   const renderSelectionStep = () => {
     if (step === 2) {
       return (
-        <>
+        <div id="cuisine">
           <h4>Cuisine</h4>
           <div className="options-container">
             {cuisines.map((cuisine) => (
               <Button
                 key={cuisine}
-                className={`option-btn ${selectedCuisine === cuisine ? "selected" : ""
-                  }`}
+                className={`option-btn ${
+                  selectedCuisine === cuisine ? "selected" : ""
+                }`}
                 onClick={() => setSelectedCuisine(cuisine)}
               >
                 {cuisine}
               </Button>
             ))}
           </div>
-        </>
+        </div>
       );
     } else if (step === 3) {
       return (
-        <>
+        <div id="spice-level">
           <h4>Spice Level</h4>
           <div className="options-container">
             {spiceLevels.map((level) => (
               <Button
                 key={level}
-                className={`option-btn ${selectedSpiceLevel === level ? "selected" : ""
-                  }`}
+                className={`option-btn ${
+                  selectedSpiceLevel === level ? "selected" : ""
+                }`}
                 onClick={() => setSelectedSpiceLevel(level)}
               >
                 {level}
               </Button>
             ))}
           </div>
-        </>
+        </div>
       );
     } else if (step === 4) {
       return (
-        <>
+        <div id="chutney">
           <h4>Chutney (Choose up to {chutneyLimit})</h4>
           <div className="options-container">
             {chutneys.map((chutney) => (
               <Button
                 key={chutney}
-                className={`option-btn ${selectedChutneys.includes(chutney) ? "selected" : ""
-                  }`}
+                className={`option-btn ${
+                  selectedChutneys.includes(chutney) ? "selected" : ""
+                }`}
                 onClick={() => handleChutneySelect(chutney)}
                 disabled={
                   selectedChutneys.length >= chutneyLimit &&
@@ -127,7 +139,7 @@ const SelectOptions = () => {
               </Button>
             ))}
           </div>
-        </>
+        </div>
       );
     }
   };
@@ -155,12 +167,13 @@ const SelectOptions = () => {
               (step === 3 && !selectedSpiceLevel) ||
               (step === 4 && selectedChutneys.length === 0)
             }
-            className={`next-page-btn ${(step === 2 && selectedCuisine) ||
+            className={`next-page-btn ${
+              (step === 2 && selectedCuisine) ||
               (step === 3 && selectedSpiceLevel) ||
               (step === 4 && selectedChutneys.length > 0)
-              ? "enabled"
-              : ""
-              }`}
+                ? "enabled"
+                : ""
+            }`}
           >
             {step < 5 ? "Next Page" : "Next Page"}
           </Button>
